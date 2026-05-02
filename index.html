@@ -387,6 +387,9 @@ body {
         Disable any <strong>ad blockers</strong> (uBlock Origin, AdBlock, etc.) before using Linkvertise.
         They break the task detection system and you'll get stuck. Re‑enable them after you're done.
         Also allow <strong>pop‑ups</strong> for the Linkvertise site in your browser settings.
+        <br><br>
+        <strong style="color:#ff6b6b;">You NEVER need to install any apps or browser extensions.</strong>
+        Only wait and click the continue buttons — that's all.
       </div>
     </div>
   </div>
@@ -477,25 +480,25 @@ body {
   draw();
 })();
 
-/* ─── ALL 13 STEPS (each with phase & color) ─── */
+/* ─── ALL 13 STEPS (refined wording) ─── */
 const allSteps = [
-  { title:"Open the Linkvertise Link", phase:"ARRIVING", color:"#00c6ff", desc:"Click the Linkvertise link shared with you. You'll land on the Linkvertise gateway page — not the actual file yet.", tips:["Do NOT use an ad blocker — it will break the process.","Use a real browser (Chrome, Firefox, Edge).","If it says 'This link has expired', ask for a new one."], miaTip:"🌿 <strong>MIA Helps:</strong> We share direct download links whenever possible. Use Linkvertise only as a fallback." },
-  { title:"See the Gateway Page", phase:"ARRIVING", color:"#00c6ff", desc:"You will see a page with the file/content name at the top, a description, and a big button usually saying 'Get Link' or 'Continue'.", tips:["Don't click random banners or popups — those are ads.","The page may have a countdown timer before the main button appears. Wait for it."], miaTip:"🌿 <strong>MIA Helps:</strong> Be patient — the real button will appear after a short wait." },
-  { title:"Task: 'Free Access with Ads' / Click the Main Button", phase:"TASK 1", color:"#a78bfa", desc:"Click the main 'Get Link' or 'Free Access' button. This triggers the first task — an ad or a required interaction. A new tab or popup may open immediately.", tips:["Allow popups for Linkvertise in your browser settings beforehand.","If a new tab opens with an ad/website, that is INTENTIONAL — it's part of the task.","Do NOT close the original Linkvertise tab."], miaTip:"🌿 <strong>MIA Helps:</strong> Keep both tabs open — the new ad tab is temporary." },
-  { title:"Task: 'I am not a Robot' / Captcha Check", phase:"TASK 1", color:"#a78bfa", desc:"A hCaptcha or Google reCAPTCHA will appear. Complete the puzzle to prove you're human.", tips:["If you fail, refresh and try again.","Take your time with image selections.","Using a VPN may make captchas harder — disable it temporarily if you struggle."], miaTip:"🌿 <strong>MIA Helps:</strong> This is a normal security step — just solve it and move on." },
-  { title:"Task: 'Explore Interesting Offers'", phase:"TASK 2", color:"#f59e0b", desc:"A popup or tab opens with a website/offer page. Stay on it for ~10–15 seconds until the timer on Linkvertise counts down.", tips:["Don't close the new tab early — wait for the timer.","You don't have to do anything on the offer page.","Once the timer ends, go back to your original Linkvertise tab."], miaTip:"🌿 <strong>MIA Helps:</strong> This is just a waiting step — no interaction needed." },
-  { title:"Task: 'Watch a Short Ad' / Video Ad", phase:"TASK 2", color:"#f59e0b", desc:"A video advertisement plays. Watch it fully (15–30 seconds). A 'Skip' button may appear after 5 seconds.", tips:["If a Skip button appears, click it to move on faster.","If no skip appears, wait until the full ad plays.","Don't mute your browser — some ad trackers require audio."], miaTip:"🌿 <strong>MIA Helps:</strong> This supports the creator — it's only a short video." },
-  { title:"Task: 'Explore a Random Article'", phase:"TASK 3", color:"#34d399", desc:"Linkvertise opens a random article in a new tab. Stay on it for the required time (shown by a countdown).", tips:["Keep both tabs open at the same time.","You can scroll but don't need to read.","After the timer ends, close the article tab and go back."], miaTip:"🌿 <strong>MIA Helps:</strong> No need to interact — the timer does the work." },
-  { title:"Task: 'Search on Google / Bing'", phase:"TASK 3", color:"#34d399", desc:"You'll be prompted to search for a specific keyword. Click 'Search Now', then click any result.", tips:["Click the provided button to open the search engine.","Click ANY result — just one click is enough.","Wait a few seconds on the result, then return to Linkvertise."], miaTip:"🌿 <strong>MIA Helps:</strong> This is a quick task — a single click finishes it." },
-  { title:"Task: 'Subscribe / Follow on Social Media'", phase:"TASK 4", color:"#f87171", desc:"Sometimes you'll be asked to subscribe to a YouTube channel, follow a Twitter/X account, or join a Discord server. Often optional.", tips:["If it's optional, look for a 'Skip' or 'No Thanks' link.","If required, complete the follow, then return.","You can unfollow afterward."], miaTip:"🌿 <strong>MIA Helps:</strong> This step is often skippable — look for the small skip text." },
-  { title:"Task: 'Install a Browser Extension' (Rare)", phase:"TASK 4", color:"#f87171", desc:"Occasionally, Linkvertise may ask you to install an extension. Rare and sometimes optional.", tips:["Check if there's a skip option first.","If required, install it, complete the task, then remove it.","Never install extensions from untrusted sources."], miaTip:"🌿 <strong>MIA Helps:</strong> We've rarely seen this — it's almost always avoidable." },
-  { title:"Completing All Tasks — 'Continue' Button Unlocks", phase:"FINAL", color:"#00ff88", desc:"After finishing all required tasks, the 'Continue' or 'Get Access' button will become clickable and highlighted.", tips:["If the button is still greyed out, you missed a task.","Some links require 2 full rounds of tasks.","The number of tasks varies by the link creator's settings."], miaTip:"🌿 <strong>MIA Helps:</strong> Once the button is active, you're almost done." },
-  { title:"Click 'Continue' / 'Get Your File'", phase:"FINAL", color:"#00ff88", desc:"Click the now‑unlocked button. You'll be redirected to the actual download link (MediaFire, Google Drive, etc.).", tips:["Save the final URL in case you need to re‑download.","If redirected to a broken page, try a different browser.","If you get 'Link Expired', ask for a fresh link."], miaTip:"🌿 <strong>MIA Helps:</strong> Now you're on a real file host — use our other guides to download safely." },
-  { title:"Download Your File", phase:"FINAL", color:"#00ff88", desc:"The file download will start automatically or you'll see a 'Download' button on the destination page. Click it and your file will begin downloading.", tips:["On mobile, use Chrome or Firefox.","On PC, check your Downloads folder (Ctrl+J).","For .mcaddon, .mcpack, .mcworld files, tap to auto‑import."], miaTip:"🌿 <strong>MIA Helps:</strong> You made it! If you need help importing, use the full guide below." }
+  { title:"Open the Linkvertise Link", phase:"ARRIVING", color:"#00c6ff", desc:"Click the Linkvertise link you've been given. You'll land on the Linkvertise gateway page — not the actual file yet.", tips:["Do NOT use an ad blocker — it will break the process.","Use a real browser (Chrome, Firefox, Edge) – avoid in‑app browsers like Discord's.","If the link says 'expired', ask the sharer for a new one."], miaTip:"🌿 <strong>MIA Helps:</strong> We share direct download links whenever possible. Use Linkvertise only as a fallback." },
+  { title:"See the Gateway Page", phase:"ARRIVING", color:"#00c6ff", desc:"You'll see a page with the file name, a description, and a main button – often labeled <strong>'Get Link'</strong> or <strong>'Continue'</strong>.", tips:["Only click the main button – ignore any banner ads or pop‑ups.","A short countdown may appear before the button becomes clickable – wait for it."], miaTip:"🌿 <strong>MIA Helps:</strong> Be patient — the real button will appear after a short wait." },
+  { title:"Choose the Free / Ad‑Supported Option", phase:"TASK 1", color:"#a78bfa", desc:"After clicking the main button, you may see subscription plans (e.g., free trial, 1 month). <strong>Scroll down</strong> and look for the <strong>'Free Access'</strong> or <strong>'Watch Ads'</strong> option – that's the only one you need.", tips:["You never have to pay — always pick the free, ad‑supported choice.","If you see a 'Skip' or 'No thanks' link, you can use it to bypass paid plans."], miaTip:"🌿 <strong>MIA Helps:</strong> Choosing the free option supports the creator without costing you anything." },
+  { title:"Solve the Captcha (if it appears)", phase:"TASK 1", color:"#a78bfa", desc:"Sometimes a captcha will appear (hCaptcha or reCAPTCHA). Complete it to prove you're human.", tips:["Take your time — there's no penalty for failing.","If it doesn't load, refresh the page.","Using a VPN may make captchas harder – disable it temporarily if you struggle."], miaTip:"🌿 <strong>MIA Helps:</strong> This is a standard security step – solve it and continue." },
+  { title:"Task: Explore an Offer (Wait Timer)", phase:"TASK 2", color:"#f59e0b", desc:"A pop‑up or new tab may open with a website/offer page. Stay on it for about 10–15 seconds while a timer counts down on the Linkvertise page.", tips:["Don't close the new tab early – wait for the timer to finish.","You don't need to click anything on the offer page – just let it sit open.","After the timer ends, go back to your original Linkvertise tab."], miaTip:"🌿 <strong>MIA Helps:</strong> This is just a waiting step — no interaction needed." },
+  { title:"Task: Watch a Short Ad (Video)", phase:"TASK 2", color:"#f59e0b", desc:"A video ad may play. Watch it (usually 15–30 seconds). A <strong>'Skip'</strong> button often appears after 5 seconds.", tips:["Click 'Skip' as soon as it appears.","If there's no skip button, wait until the ad finishes.","Don't mute your browser – some ads require audio to count as viewed."], miaTip:"🌿 <strong>MIA Helps:</strong> This supports the creator — it's only a short video." },
+  { title:"Task: Explore a Random Article", phase:"TASK 3", color:"#34d399", desc:"Linkvertise may open a random article in a new tab. A countdown timer will appear — just keep the tab open until the timer reaches zero.", tips:["Keep both tabs open at the same time.","You can scroll, but you don't need to read.","When the timer ends, close the article tab and return to Linkvertise."], miaTip:"🌿 <strong>MIA Helps:</strong> No need to interact — the timer does the work." },
+  { title:"Task: Search on Google / Bing", phase:"TASK 3", color:"#34d399", desc:"You'll be asked to search for a keyword. Click the <strong>'Search Now'</strong> or <strong>'Go to Search'</strong> button, then click any result on the search page.", tips:["Click the provided button to open the search engine.","Click ANY result — just one click is enough.","Stay on the result for a few seconds, then return to Linkvertise."], miaTip:"🌿 <strong>MIA Helps:</strong> This is a quick task — a single click finishes it." },
+  { title:"Task: Follow / Subscribe (often optional)", phase:"TASK 4", color:"#f87171", desc:"You might be asked to subscribe to a YouTube channel, follow a social media account, or join a Discord server. This is usually optional.", tips:["Look for a 'Skip' or 'No Thanks' link – it's often small but clickable.","If you must follow, do so and then return to Linkvertise.","You can unfollow later — Linkvertise doesn't track that."], miaTip:"🌿 <strong>MIA Helps:</strong> This step is often skippable — look for the skip text before committing." },
+  { title:"Task: Install a Browser Extension (Rare)", phase:"TASK 4", color:"#f87171", desc:"Very occasionally, Linkvertise may ask you to install an extension. <strong>This is almost never required.</strong>", tips:["Always check for a 'Skip' button first.","If you must install it, complete the task and then remove the extension from your browser.","Never install extensions from sources you don't trust."], miaTip:"🌿 <strong>MIA Helps:</strong> We've rarely seen this — it's almost always avoidable." },
+  { title:"All Tasks Done — 'Continue' Button Appears", phase:"FINAL", color:"#00ff88", desc:"Once you've finished all the required tasks (usually 2–4), the <strong>'Continue'</strong> or <strong>'Get Access'</strong> button will become clickable.", tips:["If the button is still greyed out, you may have missed a task – scroll up/down to check.","Some links require going through two rounds of tasks – be patient.","The number of tasks depends on the link creator's settings."], miaTip:"🌿 <strong>MIA Helps:</strong> Once the button is active, you're almost there." },
+  { title:"Click 'Continue' to Get Your File", phase:"FINAL", color:"#00ff88", desc:"Click the unlocked button. You'll be redirected to the real download page (MediaFire, Google Drive, etc.).", tips:["Save the final URL in case you need to re‑download later.","If the page looks broken, try a different browser.","If you get a 'Link Expired' message, ask the sharer for a fresh link."], miaTip:"🌿 <strong>MIA Helps:</strong> Now you're on a trusted file host – use our other guides to download safely." },
+  { title:"Download Your File", phase:"FINAL", color:"#00ff88", desc:"The file will either start downloading automatically or you'll see a download button. Click it and your file will be saved.", tips:["On mobile, use Chrome or Firefox (avoid Samsung Internet).","On PC, check your Downloads folder (Ctrl+J in Chrome).","For .mcaddon / .mcpack / .mcworld files, simply tap the file to auto‑import into Minecraft."], miaTip:"🌿 <strong>MIA Helps:</strong> You made it! For a complete installation guide, use the button below." }
 ];
 
 let currentStep = 0;
-let currentSteps = allSteps;  // currently displayed steps (filtered or all)
+let currentSteps = allSteps;
 
 const container = document.getElementById('stepContainer');
 const prevBtn = document.getElementById('prevBtn');
@@ -543,9 +546,9 @@ function updateUI() {
   nextBtn.disabled = currentStep === steps.length - 1;
   indicator.textContent = `${currentStep + 1} / ${steps.length}`;
   progressFill.style.width = `${((currentStep) / (steps.length - 1)) * 100}%`;
-  // Show import button only on the very last step of the final phase (which is the last overall)
+
   const isFinalStep = steps === allSteps && currentStep === allSteps.length - 1;
-  const isFilteredFinal = steps.length > 0 && steps === currentSteps && currentStep === steps.length - 1 && steps[currentStep].phase === 'FINAL';
+  const isFilteredFinal = steps.length > 0 && currentStep === steps.length - 1 && steps[currentStep].phase === 'FINAL';
   extraBtn.style.display = (isFinalStep || (steps !== allSteps && isFilteredFinal)) ? 'block' : 'none';
 }
 
@@ -564,7 +567,6 @@ function setPhase(phase) {
   renderSteps(currentSteps);
   updateUI();
 
-  // Highlight active phase button
   phaseButtons.forEach(btn => btn.classList.remove('active'));
   const activeBtn = document.querySelector(`.phase-btn[data-phase="${phase}"]`);
   if (activeBtn) activeBtn.classList.add('active');
@@ -578,7 +580,6 @@ function showAll() {
   phaseButtons.forEach(btn => btn.classList.remove('active'));
 }
 
-// Phase button click handlers
 phaseButtons.forEach(btn => {
   btn.addEventListener('click', () => {
     const phase = btn.dataset.phase;
@@ -586,7 +587,6 @@ phaseButtons.forEach(btn => {
   });
 });
 
-// Initial load: show all steps
 renderSteps(allSteps);
 updateUI();
 </script>
