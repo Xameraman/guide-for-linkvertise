@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How to Download through Linkvertise — MIA Guide</title>
+<title>How to Download through Linkvertise — Complete MIA Guide</title>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -12,6 +12,9 @@
   --dark:#080E1A; --panel:#141E2E; --card:#1A2435;
   --light:#F0EBD8; --accent:#FFD700; --warn:#FF6B35;
   --tip:#47C96B; --sand:#F5D67A; --mia:#5D9E31;
+  --phase-arrival:#00c6ff; --phase-task1:#a78bfa;
+  --phase-task2:#f59e0b; --phase-task3:#34d399;
+  --phase-task4:#f87171; --phase-final:#00ff88;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
@@ -115,11 +118,32 @@ body {
 }
 .hero-sub{ font-size:14px; color:var(--sand); font-weight:700; margin-top:6px; position:relative; z-index:1; }
 
+/* ── WARNING ── */
+.warning-box {
+  max-width: 780px;
+  margin: 20px auto 0;
+  padding: 0 18px;
+}
+.warning-box .warn-callout {
+  background: rgba(251,191,36,0.07);
+  border: 1px solid rgba(251,191,36,0.3);
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  backdrop-filter: blur(4px);
+}
+.warn-icon { font-size: 22px; flex-shrink: 0; }
+.warn-text { color: #fbbf24; font-weight: 700; margin-bottom: 4px; }
+.warn-desc { color: #94a3b8; font-size: 13.5px; line-height: 1.6; }
+.warn-desc strong { color: #e2e8f0; }
+
 /* ── WIZARD ── */
-.wizard-wrap{ max-width:750px; margin: -10px auto 50px; padding: 0 18px; z-index:2; position:relative; }
+.wizard-wrap{ max-width:780px; margin: 32px auto 50px; padding: 0 18px; z-index:2; position:relative; }
 .step-container {
   background:rgba(24,34,51,0.8); backdrop-filter:blur(12px);
-  border-radius:16px; padding:28px 22px; min-height:320px;
+  border-radius:16px; padding:28px 22px; min-height:360px;
   box-shadow:0 8px 32px rgba(0,0,0,0.4), 0 0 30px rgba(93,158,49,0.15);
   border:1px solid rgba(93,158,49,0.2); transition:all 0.4s;
 }
@@ -136,8 +160,41 @@ body {
   font-size:8px; padding:4px 10px; border-radius:4px; color:#fff;
   box-shadow:0 0 14px rgba(93,158,49,0.6);
 }
+/* override step-num color per phase using JS injected style */
+.phase-label {
+  font-size:11px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; display:inline-block;
+  padding:3px 12px; border-radius:999px;
+  margin-left:12px;
+}
+
 .step-body { font-size:15px; line-height:1.8; color:#C8D8E0; }
 .step-body strong { color:var(--accent); }
+
+.tips-box {
+  margin-top:16px;
+  background:rgba(10,15,26,0.8);
+  border:1px solid #1e293b;
+  border-radius:10px;
+  padding:14px 16px;
+}
+.tips-title {
+  font-size:11px; font-weight:700; letter-spacing:2px;
+  color:#475569; text-transform:uppercase;
+  margin-bottom:10px;
+}
+.tips-list {
+  list-style:none; padding:0;
+  display:flex; flex-direction:column; gap:8px;
+}
+.tips-list li {
+  color:#94a3b8; font-size:13px; line-height:1.6;
+  padding-left:16px; position:relative;
+}
+.tips-list li::before {
+  content:"•"; color:var(--tip);
+  position:absolute; left:0;
+}
 
 .callout {
   display:flex; gap:10px; align-items:flex-start;
@@ -271,13 +328,25 @@ body {
   </div>
   <div class="badge">📦 MIA GUIDE</div>
   <h1>HOW TO DOWNLOAD<br>THROUGH LINKVERTISE</h1>
-  <p class="hero-sub">Wait, click, never install — safe steps</p>
+  <p class="hero-sub">Every step · Every task · Nothing skipped</p>
+</div>
+
+<div class="warning-box">
+  <div class="warn-callout">
+    <span class="warn-icon">⚠️</span>
+    <div>
+      <div class="warn-text">Before You Start — Important</div>
+      <div class="warn-desc">
+        Disable any <strong>ad blockers</strong> (uBlock Origin, AdBlock, etc.) before using Linkvertise.
+        They break the task detection system and you'll get stuck. Re‑enable them after you're done.
+        Also allow <strong>pop‑ups</strong> for the Linkvertise site in your browser settings.
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="wizard-wrap">
-  <div class="step-container" id="stepContainer">
-    <!-- panels injected by JS -->
-  </div>
+  <div class="step-container" id="stepContainer"></div>
 
   <div class="progress-bar" style="margin-top:18px;">
     <div class="progress-fill" id="progressFill"></div>
@@ -291,7 +360,7 @@ body {
 
   <div class="nav-row">
     <button class="nav-btn" id="prevBtn" onclick="changeStep(-1)">← Previous</button>
-    <span class="step-indicator" id="stepIndicator">1 / 9</span>
+    <span class="step-indicator" id="stepIndicator">1 / 13</span>
     <button class="nav-btn" id="nextBtn" onclick="changeStep(1)">Next →</button>
   </div>
 </div>
@@ -309,232 +378,200 @@ body {
 </div>
 
 <script>
-/* ─── Animated canvas background (stars, orbs, shooting stars, pixels) ─── */
+/* ─── Animated canvas background ─── */
 (function(){
   const canvas = document.getElementById('bg-canvas');
   const ctx = canvas.getContext('2d');
+  let W,H;
+  function resize(){ W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight; }
+  resize(); window.addEventListener('resize', resize);
 
-  let W, H;
-  function resize(){
-    W = canvas.width = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  const stars = [];
-  for (let i = 0; i < 160; i++) {
-    stars.push({
-      x: Math.random(),
-      y: Math.random() * 0.85,
-      r: Math.random() * 1.4 + 0.3,
-      a: Math.random(),
-      speed: 0.003 + Math.random() * 0.006,
-      phase: Math.random() * Math.PI * 2
-    });
-  }
-
-  const ORB_COLORS = [
-    'rgba(93,158,49,', 'rgba(71,201,107,', 'rgba(198,120,255,',
-    'rgba(255,215,0,', 'rgba(88,101,242,'
-  ];
-  const ORBS = [];
-  for (let i = 0; i < 7; i++) {
-    ORBS.push({
-      x: Math.random(),
-      y: Math.random(),
-      r: 60 + Math.random() * 120,
-      col: ORB_COLORS[Math.floor(Math.random() * ORB_COLORS.length)],
-      vx: (Math.random() - 0.5) * 0.00015,
-      vy: (Math.random() - 0.5) * 0.00015,
-      a: 0.04 + Math.random() * 0.05
-    });
-  }
-
-  const PIX_COLS = ['#5D9E31','#7DC940','#FFD700','#47C96B','#C678FF','#fff','#5865F2'];
-  const PIXELS = [];
-  function spawnPixel() {
-    return {
-      x: Math.random(),
-      y: 1.05,
-      size: 3 + Math.random() * 5,
-      col: PIX_COLS[Math.floor(Math.random() * PIX_COLS.length)],
-      vx: (Math.random() - 0.5) * 0.0004,
-      vy: -(0.0004 + Math.random() * 0.0008),
-      a: 0,
-      maxA: 0.4 + Math.random() * 0.35,
-      rot: Math.random() * 360,
-      rotV: (Math.random() - 0.5) * 1.2
-    };
-  }
-  for (let i = 0; i < 28; i++) PIXELS.push(spawnPixel());
-
-  let shooters = [];
-  setInterval(() => {
-    shooters.push({
-      x: Math.random() * 0.6,
-      y: Math.random() * 0.4,
-      len: 80 + Math.random() * 140,
-      speed: 0.006 + Math.random() * 0.008,
-      progress: 0,
-      a: 0.7 + Math.random() * 0.3,
-      angle: Math.PI / 5 + (Math.random() - 0.5) * 0.3
-    });
-  }, 3200);
-
-  let t = 0;
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-    const grad = ctx.createLinearGradient(0, 0, 0, H);
-    grad.addColorStop(0, '#06091A');
-    grad.addColorStop(0.5, '#0A1628');
-    grad.addColorStop(1, '#0D2040');
-    ctx.fillStyle = grad;
-    ctx.fillRect(0, 0, W, H);
-
-    for (const o of ORBS) {
-      o.x += o.vx; o.y += o.vy;
-      if (o.x < -0.1) o.x = 1.1;
-      if (o.x > 1.1) o.x = -0.1;
-      if (o.y < -0.1) o.y = 1.1;
-      if (o.y > 1.1) o.y = -0.1;
-      const g = ctx.createRadialGradient(o.x*W, o.y*H, 0, o.x*W, o.y*H, o.r);
-      g.addColorStop(0, o.col + o.a + ')');
-      g.addColorStop(1, o.col + '0)');
-      ctx.fillStyle = g;
-      ctx.beginPath();
-      ctx.arc(o.x*W, o.y*H, o.r, 0, Math.PI*2);
-      ctx.fill();
-    }
-
-    for (const s of stars) {
-      const pulse = 0.4 + 0.6 * (0.5 + 0.5 * Math.sin(t * s.speed + s.phase));
-      ctx.globalAlpha = s.a * pulse;
-      ctx.fillStyle = '#fff';
-      ctx.beginPath();
-      ctx.arc(s.x * W, s.y * H, s.r * (0.8 + 0.3 * pulse), 0, Math.PI*2);
-      ctx.fill();
-    }
-    ctx.globalAlpha = 1;
-
-    shooters = shooters.filter(s => s.progress < 1.3);
-    for (const s of shooters) {
-      s.progress += s.speed;
-      const sx = s.x * W + Math.cos(s.angle) * s.progress * s.len * 3;
-      const sy = s.y * H + Math.sin(s.angle) * s.progress * s.len * 3;
-      const ex = sx - Math.cos(s.angle) * s.len;
-      const ey = sy - Math.sin(s.angle) * s.len;
-      const fade = s.progress > 0.8 ? 1 - (s.progress - 0.8) / 0.5 : 1;
-      const lg = ctx.createLinearGradient(ex, ey, sx, sy);
-      lg.addColorStop(0, 'rgba(255,255,255,0)');
-      lg.addColorStop(1, `rgba(255,255,255,${s.a * fade})`);
-      ctx.strokeStyle = lg;
-      ctx.lineWidth = 1.5;
-      ctx.globalAlpha = fade;
-      ctx.beginPath();
-      ctx.moveTo(ex, ey);
-      ctx.lineTo(sx, sy);
-      ctx.stroke();
-      ctx.globalAlpha = 1;
-    }
-
-    for (let i = 0; i < PIXELS.length; i++) {
-      const p = PIXELS[i];
-      p.x += p.vx; p.y += p.vy;
-      p.rot += p.rotV;
-      p.a = Math.min(p.maxA, p.a + 0.008);
-      if (p.y < -0.05) PIXELS[i] = spawnPixel();
-      ctx.save();
-      ctx.translate(p.x * W, p.y * H);
-      ctx.rotate(p.rot * Math.PI / 180);
-      ctx.globalAlpha = p.a;
-      ctx.fillStyle = p.col;
-      ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size);
-      ctx.restore();
-    }
-    ctx.globalAlpha = 1;
-
-    t += 0.6;
-    requestAnimationFrame(draw);
+  const stars = []; for(let i=0;i<160;i++) stars.push({ x:Math.random(), y:Math.random()*0.85, r:Math.random()*1.4+0.3, a:Math.random(), speed:0.003+Math.random()*0.006, phase:Math.random()*Math.PI*2 });
+  const ORBS = []; const orbCols = ['rgba(93,158,49,','rgba(71,201,107,','rgba(198,120,255,','rgba(255,215,0,','rgba(88,101,242,'];
+  for(let i=0;i<7;i++) ORBS.push({ x:Math.random(), y:Math.random(), r:60+Math.random()*120, col:orbCols[Math.floor(Math.random()*orbCols.length)], vx:(Math.random()-0.5)*0.00015, vy:(Math.random()-0.5)*0.00015, a:0.04+Math.random()*0.05 });
+  const PIXELS = []; function spawnPixel(){ return { x:Math.random(), y:1.05, size:3+Math.random()*5, col:['#5D9E31','#7DC940','#FFD700','#47C96B','#C678FF','#fff','#5865F2'][Math.floor(Math.random()*7)], vx:(Math.random()-0.5)*0.0004, vy:-(0.0004+Math.random()*0.0008), a:0, maxA:0.4+Math.random()*0.35, rot:Math.random()*360, rotV:(Math.random()-0.5)*1.2 }; }
+  for(let i=0;i<28;i++) PIXELS.push(spawnPixel());
+  let shooters=[]; setInterval(()=>{ shooters.push({ x:Math.random()*0.6, y:Math.random()*0.4, len:80+Math.random()*140, speed:0.006+Math.random()*0.008, progress:0, a:0.7+Math.random()*0.3, angle:Math.PI/5+(Math.random()-0.5)*0.3 }); },3200);
+  let t=0;
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    const grad=ctx.createLinearGradient(0,0,0,H); grad.addColorStop(0,'#06091A'); grad.addColorStop(0.5,'#0A1628'); grad.addColorStop(1,'#0D2040');
+    ctx.fillStyle=grad; ctx.fillRect(0,0,W,H);
+    for(const o of ORBS){ o.x+=o.vx; o.y+=o.vy; if(o.x<-0.1)o.x=1.1; if(o.x>1.1)o.x=-0.1; if(o.y<-0.1)o.y=1.1; if(o.y>1.1)o.y=-0.1;
+      const g=ctx.createRadialGradient(o.x*W,o.y*H,0,o.x*W,o.y*H,o.r); g.addColorStop(0,o.col+o.a+')'); g.addColorStop(1,o.col+'0)');
+      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(o.x*W,o.y*H,o.r,0,Math.PI*2); ctx.fill(); }
+    for(const s of stars){ const pulse=0.4+0.6*(0.5+0.5*Math.sin(t*s.speed+s.phase)); ctx.globalAlpha=s.a*pulse; ctx.fillStyle='#fff'; ctx.beginPath(); ctx.arc(s.x*W,s.y*H,s.r*(0.8+0.3*pulse),0,Math.PI*2); ctx.fill(); } ctx.globalAlpha=1;
+    shooters=shooters.filter(s=>s.progress<1.3);
+    for(const s of shooters){ s.progress+=s.speed;
+      const sx=s.x*W+Math.cos(s.angle)*s.progress*s.len*3, sy=s.y*H+Math.sin(s.angle)*s.progress*s.len*3;
+      const ex=sx-Math.cos(s.angle)*s.len, ey=sy-Math.sin(s.angle)*s.len;
+      const fade=s.progress>0.8?1-(s.progress-0.8)/0.5:1;
+      const lg=ctx.createLinearGradient(ex,ey,sx,sy); lg.addColorStop(0,'rgba(255,255,255,0)'); lg.addColorStop(1,`rgba(255,255,255,${s.a*fade})`);
+      ctx.strokeStyle=lg; ctx.lineWidth=1.5; ctx.globalAlpha=fade; ctx.beginPath(); ctx.moveTo(ex,ey); ctx.lineTo(sx,sy); ctx.stroke(); ctx.globalAlpha=1; }
+    for(let i=0;i<PIXELS.length;i++){ const p=PIXELS[i]; p.x+=p.vx; p.y+=p.vy; p.rot+=p.rotV; p.a=Math.min(p.maxA,p.a+0.008); if(p.y<-0.05) PIXELS[i]=spawnPixel();
+      ctx.save(); ctx.translate(p.x*W,p.y*H); ctx.rotate(p.rot*Math.PI/180); ctx.globalAlpha=p.a; ctx.fillStyle=p.col; ctx.fillRect(-p.size/2,-p.size/2,p.size,p.size); ctx.restore(); } ctx.globalAlpha=1;
+    t+=0.6; requestAnimationFrame(draw);
   }
   draw();
 })();
 
-/* ─── Linkvertise Wizard Steps ─── */
+/* ─── Detailed Linkvertise steps (13 total) ─── */
 const steps = [
   {
-    title: "👋 What is Linkvertise?",
-    body: `
-      <p>Linkvertise is a link monetization service used by some creators. Before you reach the real download, you may need to <strong>wait a few seconds</strong>, see ads, and click through a few steps.</p>
-      <p style="margin-top:10px;">You <strong>never</strong> need to install anything or pay — it's just a process to support the creator.</p>
-      <div class="callout info"><span class="callout-icon">ℹ️</span><span>MIA always prefers direct links, but this guide helps if a Linkvertise link is the only option.</span></div>
-    `,
+    title: "Open the Linkvertise Link",
+    phase: "ARRIVING",
+    color: "#00c6ff",
+    desc: "Click the Linkvertise link shared with you. You'll land on the Linkvertise gateway page — not the actual file yet.",
+    tips: [
+      "Do NOT use an ad blocker — it will break the process.",
+      "Use a real browser (Chrome, Firefox, Edge). Avoid in‑app browsers like Discord's built‑in one.",
+      "If it says 'This link has expired', ask for a new one."
+    ],
     miaTip: "🌿 <strong>MIA Helps:</strong> We share direct download links whenever possible. Use Linkvertise only as a fallback."
   },
   {
-    title: "🔗 Step 1: Open the Link",
-    body: `
-      <p>Tap the Linkvertise link provided. You'll be taken to a page that shows access options.</p>
-      <p>Take a quick look: you should see something like <strong>“Free access with ads”</strong> – that's the one you want.</p>
-    `,
-    miaTip: "🌿 <strong>MIA Helps:</strong> All MIA links are pre‑checked, so you'll rarely encounter Linkvertise through us."
+    title: "See the Gateway Page",
+    phase: "ARRIVING",
+    color: "#00c6ff",
+    desc: "You will see a page with the file/content name at the top, a description, and a big button usually saying 'Free Access' or 'Continue'.",
+    tips: [
+      "Don't click random banners or popups — those are ads. Only click the main button.",
+      "The page may have a countdown timer before the main button appears. Wait for it."
+    ],
+    miaTip: "🌿 <strong>MIA Helps:</strong> Be patient — the real button will appear after a short wait."
   },
   {
-    title: "🆓 Step 2: Choose Free Access",
-    body: `
-      <p>Always pick the <strong>“Free access with ads”</strong> option. Never select any premium or paid option – they aren’t necessary.</p>
-      <div class="callout warn"><span class="callout-icon">⚠️</span><span>If you see a payment request, simply go back and find the free option.</span></div>
-    `,
-    miaTip: "🌿 <strong>MIA Helps:</strong> No Minecraft addon requires payment through Linkvertise — any paid prompt can be safely ignored."
+    title: "Task: 'Free Access with Ads' / Click the Main Button",
+    phase: "TASK 1",
+    color: "#a78bfa",
+    desc: "Click the main 'Free Access' or 'Continue for Free' button. This triggers the first task — an ad or a required interaction. A new tab or popup may open immediately.",
+    tips: [
+      "Allow popups for Linkvertise in your browser settings beforehand.",
+      "If a new tab opens with an ad/website, that is INTENTIONAL — it's part of the task.",
+      "Do NOT close the original Linkvertise tab."
+    ],
+    miaTip: "🌿 <strong>MIA Helps:</strong> Keep both tabs open — the new ad tab is temporary."
   },
   {
-    title: "⏳ Step 3: Wait for the Timer",
-    body: `
-      <p>A countdown will appear (usually 5–15 seconds). <strong>Just wait until it finishes.</strong> Do not click anything else during this time.</p>
-      <p>When the timer ends, a button like “Continue” or “Next step” will become clickable.</p>
-    `,
-    miaTip: "🌿 <strong>MIA Helps:</strong> Patience is key. The wait supports creators without costing you anything."
+    title: "Task: 'I am not a Robot' / Captcha Check",
+    phase: "TASK 1",
+    color: "#a78bfa",
+    desc: "A hCaptcha or Google reCAPTCHA will appear. Complete the puzzle to prove you're human.",
+    tips: [
+      "If you fail, refresh and try again.",
+      "Take your time with image selections (traffic lights, bicycles, etc.).",
+      "Using a VPN may make captchas harder — disable it temporarily if you struggle."
+    ],
+    miaTip: "🌿 <strong>MIA Helps:</strong> This is a normal security step — just solve it and move on."
   },
   {
-    title: "🔄 Step 4: Continue Through Steps",
-    body: `
-      <p>You may see buttons like <strong>“Continue”</strong>, <strong>“Next step”</strong>, or <strong>“Discover / Unlock content”</strong>. Tap them and continue.</p>
-      <p>Some links require multiple steps — just keep going until you reach the final button.</p>
-    `,
-    miaTip: "🌿 <strong>MIA Helps:</strong> If you get stuck, try refreshing the page. Most issues fix themselves."
+    title: "Task: 'Explore Interesting Offers'",
+    phase: "TASK 2",
+    color: "#f59e0b",
+    desc: "A popup or tab opens with a website/offer page. Stay on it for ~10–15 seconds until the timer on Linkvertise counts down.",
+    tips: [
+      "Don't close the new tab early — wait for the timer on Linkvertise to finish.",
+      "You don't have to do anything on the offer page — just let it sit open.",
+      "Once the timer ends, go back to your original Linkvertise tab."
+    ],
+    miaTip: "🌿 <strong>MIA Helps:</strong> This is just a waiting step — no interaction needed."
   },
   {
-    title: "🧭 Step 5: Stay on the Main Page",
-    body: `
-      <p>Linkvertise may open new tabs or pop‑ups. <strong>Close any extra tabs immediately</strong> and stay on the original Linkvertise page.</p>
-      <div class="callout tip"><span class="callout-icon">💡</span><span>If a pop‑up appears, just close it. Never interact with its contents.</span></div>
-    `,
-    miaTip: "🌿 <strong>MIA Helps:</strong> Using Brave browser can block many of these extra tabs automatically."
+    title: "Task: 'Watch a Short Ad' / Video Ad",
+    phase: "TASK 2",
+    color: "#f59e0b",
+    desc: "A video advertisement plays. Watch it fully (15–30 seconds). A 'Skip' button may appear after 5 seconds.",
+    tips: [
+      "If a Skip button appears, click it to move on faster.",
+      "If no skip appears, wait until the full ad plays and is dismissed.",
+      "Don't mute your browser — some ad trackers require audio to be enabled.",
+      "If the ad doesn't load, try refreshing the page and repeating the steps."
+    ],
+    miaTip: "🌿 <strong>MIA Helps:</strong> This supports the creator — it's only a short video."
   },
   {
-    title: "🚫 Step 6: Avoid Unsafe Actions",
-    body: `
-      <p>You might see prompts to <strong>“Download this app”</strong>, <strong>“Install extension”</strong>, or <strong>“Allow notifications”</strong>. <strong>Do NOT accept any of these.</strong></p>
-      <p>All you need to do is wait and click the continue buttons — nothing else.</p>
-      <div class="callout warn"><span class="callout-icon">⚠️</span><span>Never install anything from a Linkvertise page — it’s never required.</span></div>
-    `,
-    miaTip: "🌿 <strong>MIA Helps:</strong> If you're unsure, ask in our Discord. We can verify if a step is safe."
+    title: "Task: 'Explore a Random Article'",
+    phase: "TASK 3",
+    color: "#34d399",
+    desc: "Linkvertise opens a random article in a new tab. Stay on it for the required time (shown by a countdown).",
+    tips: [
+      "Keep both tabs open at the same time.",
+      "You can scroll the article but don't need to read it — just wait.",
+      "After the timer ends, close the article tab and go back to Linkvertise."
+    ],
+    miaTip: "🌿 <strong>MIA Helps:</strong> No need to interact — the timer does the work."
   },
   {
-    title: "🔓 Step 7: Get the Real Link",
-    body: `
-      <p>After finishing all steps, you’ll see a button like <strong>“Continue to destination”</strong> or <strong>“Get link”</strong>. Tap it.</p>
-      <p>This will take you to the actual file hosting service (MediaFire, Google Drive, etc.).</p>
-    `,
-    miaTip: "🌿 <strong>MIA Helps:</strong> Once you’re on the real host, use our host‑specific guides to download safely."
+    title: "Task: 'Search on Google / Bing'",
+    phase: "TASK 3",
+    color: "#34d399",
+    desc: "You'll be prompted to search for a specific keyword. Click 'Search Now' or 'Go to Search', then click any result.",
+    tips: [
+      "Click the provided button to open the search engine.",
+      "Click ANY result on the search page — just one click is enough.",
+      "Wait a few seconds on the result, then return to Linkvertise."
+    ],
+    miaTip: "🌿 <strong>MIA Helps:</strong> This is a quick task — a single click finishes it."
   },
   {
-    title: "📥 Step 8: Download Normally",
-    body: `
-      <p>You’re now on a regular download page. Proceed as usual — the same steps you’ve learned in our other guides.</p>
-      <p>If you need help importing the file, use the full import guide below.</p>
-    `,
-    miaTip: "🌿 <strong>MIA Helps:</strong> Congratulations! You’ve successfully navigated Linkvertise. Always prefer direct links in the future."
+    title: "Task: 'Subscribe / Follow on Social Media'",
+    phase: "TASK 4",
+    color: "#f87171",
+    desc: "Sometimes you'll be asked to subscribe to a YouTube channel, follow a Twitter/X account, or join a Discord server. Often optional.",
+    tips: [
+      "If it's optional, look for a 'Skip' or 'No Thanks' link.",
+      "If required, complete the follow, then return to Linkvertise.",
+      "You can unfollow afterward — Linkvertise doesn't track that."
+    ],
+    miaTip: "🌿 <strong>MIA Helps:</strong> This step is often skippable — look for the small skip text."
+  },
+  {
+    title: "Task: 'Install a Browser Extension' (Rare)",
+    phase: "TASK 4",
+    color: "#f87171",
+    desc: "Occasionally, Linkvertise may ask you to install an extension. This is rare and sometimes optional.",
+    tips: [
+      "Check if there's a skip option first.",
+      "If required, install it, complete the task, then remove it afterward.",
+      "Never install extensions from sources you don't trust."
+    ],
+    miaTip: "🌿 <strong>MIA Helps:</strong> We've rarely seen this — it's almost always avoidable."
+  },
+  {
+    title: "Completing All Tasks — 'Continue' Button Unlocks",
+    phase: "FINAL",
+    color: "#00ff88",
+    desc: "After finishing all required tasks (usually 2–4), the 'Continue' or 'Get Access' button will become clickable and highlighted.",
+    tips: [
+      "If the button is still greyed out, you missed a task — scroll up/down to check.",
+      "Some links require going through 2 full rounds of tasks.",
+      "The number of tasks varies by the link creator's settings."
+    ],
+    miaTip: "🌿 <strong>MIA Helps:</strong> Once the button is active, you're almost done."
+  },
+  {
+    title: "Click 'Continue' / 'Get Your File'",
+    phase: "FINAL",
+    color: "#00ff88",
+    desc: "Click the now‑unlocked button. You'll be redirected to the actual download link (MediaFire, Google Drive, etc.).",
+    tips: [
+      "Save the final URL in case you need to re‑download later.",
+      "If redirected to a broken‑looking page, try a different browser.",
+      "If you get 'Link Expired', ask the sharer for a fresh link."
+    ],
+    miaTip: "🌿 <strong>MIA Helps:</strong> Now you're on a real file host — use our other guides to download safely."
+  },
+  {
+    title: "Download Your File",
+    phase: "FINAL",
+    color: "#00ff88",
+    desc: "The file download will start automatically or you'll see a 'Download' button on the destination page. Click it and your file will begin downloading.",
+    tips: [
+      "On mobile, use Chrome or Firefox — not Samsung Internet.",
+      "On PC, check your Downloads folder (Ctrl+J in Chrome).",
+      "For Minecraft add‑ons (.mcaddon, .mcpack, .mcworld), tap the file to auto‑import."
+    ],
+    miaTip: "🌿 <strong>MIA Helps:</strong> You made it! If you need help importing, use the full guide below."
   }
 ];
 
@@ -552,12 +589,26 @@ function renderSteps() {
   steps.forEach((step, index) => {
     const panel = document.createElement('div');
     panel.className = 'step-panel';
+
+    // Color the step number according to phase
+    const phaseColor = step.color;
+    const phaseLabel = step.phase;
+    const phaseLabelBg = phaseColor + '20';
+    const phaseLabelBorder = phaseColor + '40';
+
     panel.innerHTML = `
       <div class="step-title">
-        <span class="step-num">${index === 0 ? 'INTRO' : `STEP ${index}`}</span>
+        <span class="step-num" style="background:${phaseColor};">STEP ${index+1}</span>
         ${step.title}
+        <span class="phase-label" style="background:${phaseLabelBg}; border:1px solid ${phaseLabelBorder}; color:${phaseColor};">${phaseLabel}</span>
       </div>
-      <div class="step-body">${step.body}</div>
+      <div class="step-body">${step.desc}</div>
+      <div class="tips-box">
+        <div class="tips-title">💡 Tips & Notes</div>
+        <ul class="tips-list">
+          ${step.tips.map(tip => `<li>${tip}</li>`).join('')}
+        </ul>
+      </div>
       <div class="callout mia-callout">
         <span class="callout-icon"><img src="mia-icon.png" alt="MIA" style="width:18px;height:18px;border-radius:3px;"></span>
         <span>${step.miaTip}</span>
@@ -573,9 +624,8 @@ function updateUI() {
   nextBtn.disabled = currentStep === totalSteps - 1;
   indicator.textContent = `${currentStep + 1} / ${totalSteps}`;
   progressFill.style.width = `${((currentStep) / (totalSteps - 1)) * 100}%`;
-
-  // Show the extra import-guide button only on the last step (index 8)
-  extraBtn.style.display = (currentStep === 8) ? 'block' : 'none';
+  // Extra button only on the absolute last step (index 12)
+  extraBtn.style.display = (currentStep === 12) ? 'block' : 'none';
 }
 
 function changeStep(direction) {
