@@ -148,6 +148,24 @@ body{background:var(--dark);font-family:'Nunito',sans-serif;color:var(--light);m
 .footer-logo{font-family:'Press Start 2P',monospace;font-size:8px;color:var(--mia);letter-spacing:2px;margin-bottom:6px;text-shadow:0 0 12px rgba(93,158,49,0.5);}
 .footer-sub{font-size:11px;color:#7A8A9A;letter-spacing:1px;}
 .footer-sub span{color:#FF6B6B;}
+
+/* ─────────────────────────────────
+   MOBILE FIX – keeps the AI chat bubble from taking over the whole screen
+   Adjust these values if needed. This targets the Chatling widget container.
+───────────────────────────────── */
+@media (max-width: 600px) {
+  /* The container where Chatling places the chat window (common class/ID guess; 
+     if your bot doesn't react, inspect the page and replace with the correct selector) */
+  .chatling-widget,
+  .chtl-chat,
+  #chatling-bubble {
+    max-width: 92vw !important;
+    max-height: 70vh !important;
+    bottom: 10px !important;
+    right: 10px !important;
+  }
+}
+/* end mobile fix */
 </style>
 </head>
 <body>
@@ -219,7 +237,7 @@ body{background:var(--dark);font-family:'Nunito',sans-serif;color:var(--light);m
     </div>
   </div>
 
-  <!-- PHASE ROADMAP (simplified to three stages) -->
+  <!-- PHASE ROADMAP (3‑stage journey) -->
   <div class="roadmap-wrap">
     <div class="roadmap-title">YOUR JOURNEY THROUGH LINKVERTISE</div>
     <div class="roadmap" id="roadmap"></div>
@@ -269,12 +287,12 @@ body{background:var(--dark);font-family:'Nunito',sans-serif;color:var(--light);m
 
 <script>
 /* ═══════════════════════════════
-   PHASE + STEP DATA (accurate and research‑backed)
+   PHASE + STEP DATA (accurate & research‑backed)
 ═══════════════════════════════ */
 const PHASES = [
   { id:'ALL',      label:'All Steps',     emoji:'📋', color:'#FFD700', count:0 },
   { id:'ARRIVING', label:'Arriving',      emoji:'🔵', color:'#00c6ff', count:2 },
-  { id:'TASKS',    label:'Complete Tasks', emoji:'🟡', color:'#f59e0b', count:8 },  // all the varied tasks
+  { id:'TASKS',    label:'Complete Tasks', emoji:'🟡', color:'#f59e0b', count:8 },
   { id:'FINAL',    label:'Final Download', emoji:'✅', color:'#00ff88', count:3 },
 ];
 
@@ -391,7 +409,7 @@ let currentIndex = 0;
 let filteredSteps = [...ALL_STEPS];
 
 /* ═══════════════════════════════
-   BUILD ROADMAP (only the three main stages)
+   BUILD ROADMAP (3‑stage)
 ═══════════════════════════════ */
 function buildRoadmap(){
   const wrap = document.getElementById('roadmap');
@@ -532,7 +550,7 @@ buildRoadmap();
 selectPhase('ALL');
 
 /* ═══════════════════════════════
-   ANIMATED CANVAS BACKGROUND (unchanged)
+   ANIMATED CANVAS BACKGROUND
 ═══════════════════════════════ */
 (function(){
   const canvas=document.getElementById('bg-canvas');
@@ -595,5 +613,9 @@ selectPhase('ALL');
   draw();
 })();
 </script>
+
+<!-- MIA AI Assistant (Chatling) -->
+<script> window.chtlConfig = { chatbotId: "7411237892" } </script>
+<script async data-id="7411237892" id="chtl-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
 </body>
 </html>
