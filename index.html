@@ -322,9 +322,9 @@ body{background:var(--dark);font-family:'Nunito',sans-serif;color:var(--light);m
     <div>
       <div class="trouble-text">Having Trouble?</div>
       <div class="trouble-desc">
-        <strong>» "Invalid Visit Detected"?</strong> Turn off your VPN and any ad‑blockers, then refresh.<br>
+        <strong>» “Invalid Visit Detected”?</strong> Turn off your VPN and any ad‑blockers, then refresh.<br>
         <strong>» Stuck on a loading screen?</strong> Disable all browser extensions, clear cache &amp; cookies, and make sure JavaScript is enabled.<br>
-        <strong>» "Continue" button stays grey?</strong> A task may be unfinished – scroll carefully and avoid refreshing unless absolutely necessary.
+        <strong>» “Continue” button stays grey?</strong> A task may be unfinished – scroll carefully and avoid refreshing unless absolutely necessary.
       </div>
     </div>
   </div>
@@ -354,7 +354,7 @@ body{background:var(--dark);font-family:'Nunito',sans-serif;color:var(--light);m
     <span class="where-icon">📍</span>
     <div class="where-text">
       <h3>Where are you right now?</h3>
-      <p>Tap a stage above that matches your screen. We'll show only the steps that matter.</p>
+      <p>Tap a stage above that matches your screen. We’ll show only the steps that matter.</p>
       <div class="where-current" id="whereCurrent" style="display:none"></div>
     </div>
   </div>
@@ -444,58 +444,58 @@ const ALL_STEPS = [
   {
     phase:'ARRIVING', globalNum:1,
     title:'Open the Linkvertise Link',
-    desc:'Click the link. You'll land on the <strong>Linkvertise gateway page</strong>, not the file itself – this is normal.',
-    tips:['Use Chrome, Firefox, or Edge (not Discord's in‑app browser).','If the link says "expired", ask the sharer for a new one.','Make sure ad blockers are OFF before proceeding.'],
-    mia:'🌿 <strong>MIA Tip:</strong> MIA shares direct links whenever possible. You're here because the creator chose to use Linkvertise.'
+    desc:'Click the link. You’ll land on the <strong>Linkvertise gateway page</strong>, not the file itself – this is normal.',
+    tips:['Use Chrome, Firefox, or Edge (not Discord’s in‑app browser).','If the link says “expired”, ask the sharer for a new one.','Make sure ad blockers are OFF before proceeding.'],
+    mia:'🌿 <strong>MIA Tip:</strong> MIA shares direct links whenever possible. You’re here because the creator chose to use Linkvertise.'
   },
   {
     phase:'ARRIVING', globalNum:2,
     title:'Read the Gateway Page',
-    desc:'You'll see the file name and a button like <strong>"Get Link"</strong> or <strong>"Continue"</strong>. A brief countdown may appear before it becomes clickable.',
-    tips:['Only click the main button – ignore banners around it.','Wait for the countdown to finish before clicking.','Refreshing resets the timer – don't do it.'],
+    desc:'You’ll see the file name and a button like <strong>“Get Link”</strong> or <strong>“Continue”</strong>. A brief countdown may appear before it becomes clickable.',
+    tips:['Only click the main button – ignore banners around it.','Wait for the countdown to finish before clicking.','Refreshing resets the timer – don’t do it.'],
     mia:'🌿 <strong>MIA Tip:</strong> Be patient – the real button shows up after a short wait.'
   },
 
   // TASKS (8 different task types)
   {
     phase:'TASKS', globalNum:3,
-    title:'Choose "Free Access with Ads"',
-    desc:'After clicking, you may see subscription plans. <strong>Scroll down</strong> and pick <strong>"Free Access with Ads"</strong> (or "Watch Ads").',
-    tips:['You NEVER need to pay – always pick the free option.','A "Skip" or "No thanks" link can bypass paid plans.','The free option is usually at the bottom of the page.'],
+    title:'Choose “Free Access with Ads”',
+    desc:'After clicking, you may see subscription plans. <strong>Scroll down</strong> and pick <strong>“Free Access with Ads”</strong> (or “Watch Ads”).',
+    tips:['You NEVER need to pay – always pick the free option.','A “Skip” or “No thanks” link can bypass paid plans.','The free option is usually at the bottom of the page.'],
     mia:'🌿 <strong>MIA Tip:</strong> Choosing free still supports the creator – it costs you nothing.'
   },
   {
     phase:'TASKS', globalNum:4,
     title:'A Captcha Might Appear',
-    desc:'You may be asked to complete a captcha. It's a standard security step – just prove you're human.',
-    tips:['Take your time – you can retry.','If it doesn't load, a refresh may reset progress (try a different browser if stuck).','VPNs can make captchas harder – disable temporarily if you struggle.'],
+    desc:'You may be asked to complete a captcha. It\'s a standard security step – just prove you\'re human.',
+    tips:['Take your time – you can retry.','If it doesn\'t load, a refresh may reset progress (try a different browser if stuck).','VPNs can make captchas harder – disable temporarily if you struggle.'],
     mia:'🌿 <strong>MIA Tip:</strong> Quick test – solve it and move on.'
   },
   {
     phase:'TASKS', globalNum:5,
     title:'Task: Wait on a Sponsored Page',
     desc:'A pop‑up or new tab will open a sponsored offer. Keep it open for <strong>10–15 seconds</strong> while a timer runs on Linkvertise.',
-    tips:['Don't close the tab early – let the timer finish.','You don't need to click anything on that offer page.','Once the timer ends, return to the original Linkvertise tab.'],
+    tips:['Don’t close the tab early – let the timer finish.','You don’t need to click anything on that offer page.','Once the timer ends, return to the original Linkvertise tab.'],
     mia:'🌿 <strong>MIA Tip:</strong> Just a waiting step – let the timer do the work.'
   },
   {
     phase:'TASKS', globalNum:6,
     title:'Task: Watch a Short Video Ad',
-    desc:'A video ad (15–30 seconds) may play. Click the <strong>"Skip"</strong> button as soon as it appears.',
-    tips:['Click "Skip" immediately when it shows up.','If there's no skip, let the ad finish (usually 30 seconds max).','Keep sound on – some ads require it to count.'],
+    desc:'A video ad (15–30 seconds) may play. Click the <strong>“Skip”</strong> button as soon as it appears.',
+    tips:['Click “Skip” immediately when it shows up.','If there’s no skip, let the ad finish (usually 30 seconds max).','Keep sound on – some ads require it to count.'],
     mia:'🌿 <strong>MIA Tip:</strong> Short video – skip it or wait, then continue.'
   },
   {
     phase:'TASKS', globalNum:7,
     title:'Task: Keep an Article Tab Open',
     desc:'Linkvertise opens a random article in a new tab. Keep it open until the countdown on the main page reaches zero.',
-    tips:['Both tabs stay open – don't close either one.','You can scroll, but you don't need to read anything.','Close the article tab only when the timer ends, then go back.'],
+    tips:['Both tabs stay open – don’t close either one.','You can scroll, but you don’t need to read anything.','Close the article tab only when the timer ends, then go back.'],
     mia:'🌿 <strong>MIA Tip:</strong> No interaction needed – the timer handles it.'
   },
   {
     phase:'TASKS', globalNum:8,
     title:'Task: Search on Google or Bing',
-    desc:'You'll be asked to search for a keyword. Click <strong>"Search Now"</strong>, then click <strong>any result</strong> on the search page.',
+    desc:'You’ll be asked to search for a keyword. Click <strong>“Search Now”</strong>, then click <strong>any result</strong> on the search page.',
     tips:['Click the search button to open the engine.','Click ANY result – one click is enough.','Stay on the result a few seconds, then return.'],
     mia:'🌿 <strong>MIA Tip:</strong> A single click on any search result completes this task.'
   },
@@ -503,7 +503,7 @@ const ALL_STEPS = [
     phase:'TASKS', globalNum:9,
     title:'Task: Follow or Subscribe (Often Optional)',
     desc:'You might see a request to subscribe to a YouTube channel or follow a social account. <strong>Usually optional</strong>.',
-    tips:['First, look for a "Skip" or "No Thanks" link near the bottom.','If required, follow/subscribe – you can unfollow later.','Linkvertise won't know if you unfollow afterwards.'],
+    tips:['First, look for a “Skip” or “No Thanks” link near the bottom.','If required, follow/subscribe – you can unfollow later.','Linkvertise won’t know if you unfollow afterwards.'],
     mia:'🌿 <strong>MIA Tip:</strong> Almost always skippable – find the skip link first.'
   },
   {
@@ -511,7 +511,7 @@ const ALL_STEPS = [
     title:'Task: Download an App (No Install Needed!)',
     desc:'A button may ask you to download an app. <strong>You do NOT need to install it.</strong>',
     tips:[
-      '1. Click the "Download" or "Install" button.',
+      '1. Click the “Download” or “Install” button.',
       '2. When the app store opens, immediately close it.',
       '3. Return to the Linkvertise page and wait for the loading icon.',
       '4. Wait about a minute – the window should close automatically.'
@@ -522,22 +522,22 @@ const ALL_STEPS = [
   // FINAL (3 steps)
   {
     phase:'FINAL', globalNum:11,
-    title:'All Tasks Done – "Continue" Button Unlocks',
-    desc:'After completing all tasks (usually 2–4), the <strong>"Continue"</strong> or <strong>"Get Access"</strong> button lights up and becomes clickable.',
+    title:'All Tasks Done – “Continue” Button Unlocks',
+    desc:'After completing all tasks (usually 2–4), the <strong>“Continue”</strong> or <strong>“Get Access”</strong> button lights up and becomes clickable.',
     tips:['If the button is still grey, double‑check for unfinished tasks by scrolling up/down.','Be careful: refreshing may restart all tasks.','Some links require multiple rounds of tasks – be patient.'],
-    mia:'🌿 <strong>MIA Tip:</strong> When that button glows, you're seconds away from the file.'
+    mia:'🌿 <strong>MIA Tip:</strong> When that button glows, you’re seconds away from the file.'
   },
   {
     phase:'FINAL', globalNum:12,
-    title:'Click "Continue" to Reach Your File',
-    desc:'Click the unlocked button. You'll be redirected to the real download page (MediaFire, Google Drive, MEGA, etc.).',
-    tips:['Bookmark the final URL for easy access later.','If the page looks broken, try a different browser.','"Link Expired"? Ask the original sharer for a fresh link.'],
-    mia:'🌿 <strong>MIA Tip:</strong> You're now on a trusted host – use our other download guides if needed.'
+    title:'Click “Continue” to Reach Your File',
+    desc:'Click the unlocked button. You’ll be redirected to the real download page (MediaFire, Google Drive, MEGA, etc.).',
+    tips:['Bookmark the final URL for easy access later.','If the page looks broken, try a different browser.','“Link Expired”? Ask the original sharer for a fresh link.'],
+    mia:'🌿 <strong>MIA Tip:</strong> You’re now on a trusted host – use our other download guides if needed.'
   },
   {
     phase:'FINAL', globalNum:13,
     title:'Download & Import Your File',
-    desc:'Your file will download automatically, or you'll see a download button. Click it and save the file.',
+    desc:'Your file will download automatically, or you’ll see a download button. Click it and save the file.',
     tips:['On mobile, use Chrome or Firefox (avoid Samsung Internet).','On PC, check your Downloads folder (Ctrl+J in Chrome).','For .mcaddon/.mcpack/.mcworld, just tap the file to auto‑import into Minecraft.'],
     mia:'🌿 <strong>MIA Tip:</strong> You did it! Use the button below for a complete import guide.',
     showInstall:true
