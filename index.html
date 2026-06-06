@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How to Download through Linkvertise — NOVA Guide</title>
     <meta name="description" content="NOVA guide for navigating Linkvertise. A simple, free way to support creators — just a few quick tasks.">
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer>
-    </script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <style>
         :root {
             --bg: #0d1b2a;
@@ -21,7 +20,7 @@
             --purple: #9b59b6;
             --green: #2ecc71;
             --red: #e74c3c;
-            --shadow: 0 10px 30px rgba(0, 0, 0, .28);
+            --shadow: 0 10px 30px rgba(0,0,0,.28);
             --c-arrive: #00c6ff;
             --c-tasks: #f59e0b;
             --c-final: #00ff88;
@@ -35,1240 +34,434 @@
             --text: #18283b;
             --muted: #5b6f88;
             --border: #c8d6e4;
-            --shadow: 0 10px 30px rgba(20, 40, 60, .12);
+            --shadow: 0 10px 30px rgba(20,40,60,.12);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
         body {
-            background: radial-gradient(circle at top, rgba(0, 229, 255, .08), transparent 38%),
-                linear-gradient(180deg, var(--bg2), var(--bg));
+            background: radial-gradient(circle at top, rgba(0,229,255,.08), transparent 38%),
+                        linear-gradient(180deg, var(--bg2), var(--bg));
             color: var(--text);
             font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
             min-height: 100vh;
             overflow-x: hidden;
         }
 
-        a {
-            color: inherit;
-        }
+        a { color: inherit; }
 
-        .page {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 18px;
-        }
+        .page { max-width: 1100px; margin: 0 auto; padding: 18px; }
 
         .header {
-            position: sticky;
-            top: 0;
-            z-index: 50;
+            position: sticky; top: 0; z-index: 50;
             backdrop-filter: blur(10px);
             background: color-mix(in srgb, var(--bg2) 85%, transparent);
             border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
-            border-radius: 18px;
-            box-shadow: var(--shadow);
-            padding: 14px 16px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 14px;
-            flex-wrap: wrap;
-            margin-bottom: 18px;
+            border-radius: 18px; box-shadow: var(--shadow);
+            padding: 14px 16px; display: flex; align-items: center; justify-content: space-between;
+            gap: 14px; flex-wrap: wrap; margin-bottom: 18px;
         }
 
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            min-width: 0;
-        }
-        .brand img {
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
-            object-fit: cover;
-            border: 1px solid var(--border);
-            box-shadow: 0 0 0 3px rgba(255, 255, 255, .03);
-            flex-shrink: 0;
-        }
-        .brand-text {
-            min-width: 0;
-        }
-        .brand-title {
-            font-size: 1.1rem;
-            font-weight: 800;
-            letter-spacing: .4px;
-            line-height: 1.15;
-        }
-        .brand-sub {
-            margin-top: 3px;
-            font-size: .82rem;
-            color: var(--muted);
-            line-height: 1.3;
-        }
+        .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+        .brand img { width: 48px; height: 48px; border-radius: 14px; object-fit: cover; border: 1px solid var(--border); box-shadow: 0 0 0 3px rgba(255,255,255,.03); flex-shrink: 0; }
+        .brand-text { min-width: 0; }
+        .brand-title { font-size: 1.1rem; font-weight: 800; letter-spacing: .4px; line-height: 1.15; }
+        .brand-sub { margin-top: 3px; font-size: .82rem; color: var(--muted); line-height: 1.3; }
 
-        .header-actions {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
+        .header-actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
 
         .btn {
-            border: 1px solid var(--border);
-            background: var(--card);
-            color: var(--text);
-            text-decoration: none;
-            padding: 10px 14px;
-            border-radius: 12px;
-            font-size: .88rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: transform .15s ease, border-color .15s ease, opacity .15s ease, background .15s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: var(--shadow);
-            font-family: inherit;
+            border: 1px solid var(--border); background: var(--card); color: var(--text);
+            text-decoration: none; padding: 10px 14px; border-radius: 12px; font-size: .88rem;
+            font-weight: 700; cursor: pointer; transition: transform .15s ease, border-color .15s ease, opacity .15s ease, background .15s ease;
+            display: inline-flex; align-items: center; gap: 8px; box-shadow: var(--shadow); font-family: inherit;
         }
-        .btn:hover {
-            transform: translateY(-1px);
-            border-color: var(--accent);
-        }
-        .btn.primary {
-            background: linear-gradient(135deg, var(--accent), var(--gold));
-            color: #07111e;
-            border-color: transparent;
-        }
+        .btn:hover { transform: translateY(-1px); border-color: var(--accent); }
+        .btn.primary { background: linear-gradient(135deg, var(--accent), var(--gold)); color: #07111e; border-color: transparent; }
 
         .hero {
             border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
             background: linear-gradient(180deg, color-mix(in srgb, var(--card2) 70%, transparent), var(--card));
-            border-radius: 22px;
-            box-shadow: var(--shadow);
-            padding: 26px;
-            margin-bottom: 18px;
+            border-radius: 22px; box-shadow: var(--shadow); padding: 26px; margin-bottom: 18px;
         }
         .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: .78rem;
-            font-weight: 800;
-            letter-spacing: .08em;
-            text-transform: uppercase;
-            color: var(--gold);
-            background: rgba(255, 215, 0, .08);
-            border: 1px solid rgba(255, 215, 0, .22);
-            padding: 7px 12px;
-            border-radius: 999px;
-            margin-bottom: 12px;
+            display: inline-flex; align-items: center; gap: 8px; font-size: .78rem; font-weight: 800;
+            letter-spacing: .08em; text-transform: uppercase; color: var(--gold);
+            background: rgba(255,215,0,.08); border: 1px solid rgba(255,215,0,.22);
+            padding: 7px 12px; border-radius: 999px; margin-bottom: 12px;
         }
-        .hero h1 {
-            font-size: clamp(1.5rem, 4vw, 2.4rem);
-            line-height: 1.1;
-            margin-bottom: 10px;
-        }
-        .hero p {
-            max-width: 720px;
-            color: var(--muted);
-            line-height: 1.7;
-            font-size: .98rem;
-        }
-        .hero-links {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 18px;
-        }
+        .hero h1 { font-size: clamp(1.5rem,4vw,2.4rem); line-height: 1.1; margin-bottom: 10px; }
+        .hero p { max-width: 720px; color: var(--muted); line-height: 1.7; font-size: .98rem; }
+        .hero-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
 
-        .main-wrap {
-            max-width: 840px;
-            margin: 0 auto;
-            padding: 0 0 40px;
-            position: relative;
-            z-index: 2;
-        }
+        .main-wrap { max-width: 840px; margin: 0 auto; padding: 0 0 40px; position: relative; z-index: 2; }
 
         .trouble-callout {
-            background: rgba(231, 76, 60, .07);
-            border: 1px solid rgba(231, 76, 60, .25);
-            border-radius: 14px;
-            padding: 14px 18px;
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
-            margin-bottom: 14px;
+            background: rgba(231,76,60,.07); border: 1px solid rgba(231,76,60,.25); border-radius: 14px;
+            padding: 14px 18px; display: flex; gap: 10px; align-items: flex-start; margin-bottom: 14px;
         }
-        .trouble-icon {
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-        .trouble-text {
-            color: #fca5a5;
-            font-weight: 800;
-            margin-bottom: 4px;
-            font-size: .9rem;
-        }
-        .trouble-desc {
-            color: var(--muted);
-            font-size: .85rem;
-            line-height: 1.6;
-        }
-        .trouble-desc strong {
-            color: #fecaca;
-        }
+        .trouble-icon { font-size: 20px; flex-shrink: 0; }
+        .trouble-text { color: #fca5a5; font-weight: 800; margin-bottom: 4px; font-size: .9rem; }
+        .trouble-desc { color: var(--muted); font-size: .85rem; line-height: 1.6; }
+        .trouble-desc strong { color: #fecaca; }
 
         .warn-callout {
-            background: rgba(251, 191, 36, .07);
-            border: 1px solid rgba(251, 191, 36, .25);
-            border-radius: 14px;
-            padding: 14px 18px;
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
-            margin-bottom: 14px;
+            background: rgba(251,191,36,.07); border: 1px solid rgba(251,191,36,.25); border-radius: 14px;
+            padding: 14px 18px; display: flex; gap: 10px; align-items: flex-start; margin-bottom: 14px;
         }
-        .warn-icon {
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-        .warn-text {
-            color: #fbbf24;
-            font-weight: 800;
-            margin-bottom: 4px;
-            font-size: .9rem;
-        }
-        .warn-desc {
-            color: var(--muted);
-            font-size: .85rem;
-            line-height: 1.6;
-        }
-        .warn-desc strong {
-            color: var(--text);
-        }
+        .warn-icon { font-size: 20px; flex-shrink: 0; }
+        .warn-text { color: #fbbf24; font-weight: 800; margin-bottom: 4px; font-size: .9rem; }
+        .warn-desc { color: var(--muted); font-size: .85rem; line-height: 1.6; }
+        .warn-desc strong { color: var(--text); }
 
-        .roadmap-wrap {
-            margin-bottom: 14px;
-        }
-        .roadmap-title {
-            font-weight: 800;
-            font-size: .72rem;
-            color: var(--muted);
-            letter-spacing: .08em;
-            text-transform: uppercase;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .roadmap {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0;
-        }
+        .roadmap-wrap { margin-bottom: 14px; }
+        .roadmap-title { font-weight: 800; font-size: .72rem; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; text-align: center; margin-bottom: 10px; }
+        .roadmap { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0; }
         .roadmap-phase {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 10px 14px;
-            border-radius: 12px;
-            border: 2px solid rgba(255, 255, 255, .08);
-            background: var(--card);
-            cursor: pointer;
-            transition: all 0.22s;
-            min-width: 80px;
-            text-align: center;
-            position: relative;
-            box-shadow: var(--shadow);
+            display: flex; flex-direction: column; align-items: center; padding: 10px 14px; border-radius: 12px;
+            border: 2px solid rgba(255,255,255,.08); background: var(--card); cursor: pointer;
+            transition: all 0.22s; min-width: 80px; text-align: center; position: relative; box-shadow: var(--shadow);
         }
-        .roadmap-phase:hover {
-            transform: translateY(-3px);
-        }
-        .roadmap-phase.active {
-            transform: translateY(-4px);
-        }
+        .roadmap-phase:hover { transform: translateY(-3px); }
+        .roadmap-phase.active { transform: translateY(-4px); }
         .roadmap-dot {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 15px;
-            margin-bottom: 5px;
-            transition: all 0.22s;
-            border: 2px solid transparent;
+            width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 15px; margin-bottom: 5px; transition: all 0.22s; border: 2px solid transparent;
         }
-        .roadmap-phase.active .roadmap-dot {
-            box-shadow: 0 0 16px currentColor;
-        }
-        .roadmap-label {
-            font-size: .72rem;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-        }
-        .roadmap-count {
-            font-size: .7rem;
-            color: var(--muted);
-            margin-top: 2px;
-        }
-        .roadmap-arrow {
-            color: rgba(255, 255, 255, .18);
-            font-size: 15px;
-            padding: 0 3px;
-            align-self: center;
-            flex-shrink: 0;
-        }
+        .roadmap-phase.active .roadmap-dot { box-shadow: 0 0 16px currentColor; }
+        .roadmap-label { font-size: .72rem; font-weight: 800; letter-spacing: 0.5px; }
+        .roadmap-count { font-size: .7rem; color: var(--muted); margin-top: 2px; }
+        .roadmap-arrow { color: rgba(255,255,255,.18); font-size: 15px; padding: 0 3px; align-self: center; flex-shrink: 0; }
 
         .where-card {
-            background: var(--card);
-            border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
-            border-radius: 16px;
-            padding: 14px 18px;
-            margin-bottom: 14px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            box-shadow: var(--shadow);
+            background: var(--card); border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+            border-radius: 16px; padding: 14px 18px; margin-bottom: 14px; display: flex; align-items: center;
+            gap: 12px; flex-wrap: wrap; box-shadow: var(--shadow);
         }
-        .where-icon {
-            font-size: 24px;
-            flex-shrink: 0;
-        }
-        .where-text {
-            flex: 1;
-            min-width: 200px;
-        }
-        .where-text h3 {
-            font-size: .95rem;
-            font-weight: 900;
-            color: var(--text);
-            margin-bottom: 2px;
-        }
-        .where-text p {
-            font-size: .82rem;
-            color: var(--muted);
-            line-height: 1.5;
-        }
-        .where-current {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 5px 12px;
-            border-radius: 8px;
-            font-size: .8rem;
-            font-weight: 800;
-            border: 1.5px solid;
-            margin-top: 6px;
-        }
+        .where-icon { font-size: 24px; flex-shrink: 0; }
+        .where-text { flex: 1; min-width: 200px; }
+        .where-text h3 { font-size: .95rem; font-weight: 900; color: var(--text); margin-bottom: 2px; }
+        .where-text p { font-size: .82rem; color: var(--muted); line-height: 1.5; }
+        .where-current { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 8px; font-size: .8rem; font-weight: 800; border: 1.5px solid; margin-top: 6px; }
 
         .step-container {
-            background: var(--card);
-            border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
-            border-radius: 20px;
-            padding: 22px 20px;
-            box-shadow: var(--shadow);
-            transition: border-color 0.3s;
+            background: var(--card); border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+            border-radius: 20px; padding: 22px 20px; box-shadow: var(--shadow); transition: border-color 0.3s;
         }
-        .step-panel {
-            display: none;
-        }
-        .step-panel.active {
-            display: block;
-            animation: fadeSlide 0.3s ease;
-        }
-        @keyframes fadeSlide {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        .step-panel { display: none; }
+        .step-panel.active { display: block; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .step-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            margin-bottom: 14px;
-            flex-wrap: wrap;
-        }
-        .step-num-badge {
-            font-weight: 900;
-            font-size: .68rem;
-            letter-spacing: .04em;
-            padding: 5px 10px;
-            border-radius: 8px;
-            color: #fff;
-            white-space: nowrap;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-        .step-title-text {
-            font-size: 1.05rem;
-            font-weight: 900;
-            color: var(--text);
-            line-height: 1.3;
-            flex: 1;
-        }
-        .step-phase-tag {
-            display: inline-flex;
-            align-items: center;
-            padding: 4px 10px;
-            border-radius: 999px;
-            font-size: .68rem;
-            font-weight: 700;
-            letter-spacing: .08em;
-            text-transform: uppercase;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
+        .step-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+        .step-num-badge { font-weight: 900; font-size: .68rem; letter-spacing: .04em; padding: 5px 10px; border-radius: 8px; color: #fff; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+        .step-title-text { font-size: 1.05rem; font-weight: 900; color: var(--text); line-height: 1.3; flex: 1; }
+        .step-phase-tag { display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 999px; font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; flex-shrink: 0; margin-top: 2px; }
 
-        .global-counter {
-            font-weight: 800;
-            font-size: .7rem;
-            color: var(--muted);
-            text-align: right;
-            margin-bottom: 8px;
-            letter-spacing: .04em;
-        }
+        .global-counter { font-weight: 800; font-size: .7rem; color: var(--muted); text-align: right; margin-bottom: 8px; letter-spacing: .04em; }
 
-        .step-body {
-            font-size: .95rem;
-            line-height: 1.7;
-            color: var(--muted);
-        }
-        .step-body strong {
-            color: var(--gold);
-        }
+        .step-body { font-size: .95rem; line-height: 1.7; color: var(--muted); }
+        .step-body strong { color: var(--gold); }
 
         .tips-box {
-            margin-top: 12px;
-            background: var(--card2);
-            border: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
-            border-radius: 12px;
-            padding: 12px 14px;
+            margin-top: 12px; background: var(--card2); border: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+            border-radius: 12px; padding: 12px 14px;
         }
-        .tips-title {
-            font-size: .72rem;
-            font-weight: 700;
-            letter-spacing: .06em;
-            color: var(--muted);
-            text-transform: uppercase;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .tips-list {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-        .tips-list li {
-            color: var(--muted);
-            font-size: .85rem;
-            line-height: 1.55;
-            padding-left: 16px;
-            position: relative;
-        }
-        .tips-list li::before {
-            content: "▸";
-            color: var(--accent);
-            position: absolute;
-            left: 0;
-            font-size: 10px;
-            top: 2px;
-        }
+        .tips-title { font-size: .72rem; font-weight: 700; letter-spacing: .06em; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+        .tips-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+        .tips-list li { color: var(--muted); font-size: .85rem; line-height: 1.55; padding-left: 16px; position: relative; }
+        .tips-list li::before { content: "▸"; color: var(--accent); position: absolute; left: 0; font-size: 10px; top: 2px; }
 
-        .progress-bar {
-            width: 100%;
-            height: 5px;
-            background: rgba(255, 255, 255, .06);
-            border-radius: 3px;
-            margin: 14px 0 4px;
-            overflow: hidden;
-        }
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent), var(--gold));
-            border-radius: 3px;
-            transition: width 0.35s ease;
-            box-shadow: 0 0 10px rgba(0, 229, 255, .35);
-        }
-        .nav-wrap {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            margin-top: 10px;
-            flex-wrap: wrap;
-        }
+        .progress-bar { width: 100%; height: 5px; background: rgba(255,255,255,.06); border-radius: 3px; margin: 14px 0 4px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--gold)); border-radius: 3px; transition: width 0.35s ease; box-shadow: 0 0 10px rgba(0,229,255,.35); }
+        .nav-wrap { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
         .nav-btn {
-            background: var(--card);
-            border: 1px solid var(--border);
-            color: var(--text);
-            font-size: .88rem;
-            font-weight: 700;
-            padding: 9px 18px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            box-shadow: var(--shadow);
-            font-family: inherit;
+            background: var(--card); border: 1px solid var(--border); color: var(--text); font-size: .88rem;
+            font-weight: 700; padding: 9px 18px; border-radius: 10px; cursor: pointer; transition: 0.2s;
+            display: flex; align-items: center; gap: 5px; box-shadow: var(--shadow); font-family: inherit;
         }
-        .nav-btn:hover:not(:disabled) {
-            background: rgba(0, 229, 255, .1);
-            border-color: var(--accent);
-            box-shadow: 0 0 18px rgba(0, 229, 255, .2);
-        }
-        .nav-btn:disabled {
-            opacity: 0.35;
-            cursor: not-allowed;
-        }
-        .step-indicator-wrap {
-            text-align: center;
-            flex: 1;
-        }
-        .step-indicator {
-            font-weight: 800;
-            font-size: .82rem;
-            color: var(--gold);
-            letter-spacing: .5px;
-            display: block;
-        }
-        .phase-indicator {
-            font-size: .72rem;
-            color: var(--muted);
-            margin-top: 3px;
-            display: block;
-        }
+        .nav-btn:hover:not(:disabled) { background: rgba(0,229,255,.1); border-color: var(--accent); box-shadow: 0 0 18px rgba(0,229,255,.2); }
+        .nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+        .step-indicator-wrap { text-align: center; flex: 1; }
+        .step-indicator { font-weight: 800; font-size: .82rem; color: var(--gold); letter-spacing: .5px; display: block; }
+        .phase-indicator { font-size: .72rem; color: var(--muted); margin-top: 3px; display: block; }
 
-        .install-link-wrap {
-            text-align: center;
-            margin-top: 16px;
-        }
+        .install-link-wrap { text-align: center; margin-top: 16px; }
         .install-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: linear-gradient(135deg, var(--accent), var(--gold));
-            color: #07111e;
-            font-weight: 900;
-            font-size: .9rem;
-            padding: 11px 26px;
-            border-radius: 12px;
-            text-decoration: none;
-            border: 2px solid transparent;
-            box-shadow: 0 0 22px rgba(0, 229, 255, .25);
-            transition: 0.2s;
+            display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--accent), var(--gold));
+            color: #07111e; font-weight: 900; font-size: .9rem; padding: 11px 26px; border-radius: 12px;
+            text-decoration: none; border: 2px solid transparent; box-shadow: 0 0 22px rgba(0,229,255,.25); transition: 0.2s;
         }
-        .install-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 32px rgba(0, 229, 255, .5);
-        }
+        .install-link:hover { transform: translateY(-3px); box-shadow: 0 0 32px rgba(0,229,255,.5); }
 
         .footer {
-            margin-top: 18px;
-            border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
-            background: color-mix(in srgb, var(--card) 88%, transparent);
-            border-radius: 20px;
-            padding: 16px;
-            box-shadow: var(--shadow);
-            text-align: center;
-            color: var(--muted);
-            line-height: 1.7;
-            font-size: .92rem;
+            margin-top: 18px; border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+            background: color-mix(in srgb, var(--card) 88%, transparent); border-radius: 20px;
+            padding: 16px; box-shadow: var(--shadow); text-align: center; color: var(--muted); line-height: 1.7; font-size: .92rem;
         }
-        .footer strong {
-            color: var(--text);
-        }
+        .footer strong { color: var(--text); }
 
         .floating-link {
-            position: fixed;
-            left: 18px;
-            bottom: 18px;
-            z-index: 60;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 11px 14px;
-            border-radius: 999px;
-            text-decoration: none;
-            background: linear-gradient(135deg, var(--accent), var(--purple));
-            color: #09111d;
-            font-weight: 900;
-            box-shadow: var(--shadow);
-            border: none;
-            font-size: .85rem;
+            position: fixed; left: 18px; bottom: 18px; z-index: 60; display: inline-flex; align-items: center;
+            gap: 8px; padding: 11px 14px; border-radius: 999px; text-decoration: none;
+            background: linear-gradient(135deg, var(--accent), var(--purple)); color: #09111d; font-weight: 900;
+            box-shadow: var(--shadow); border: none; font-size: .85rem;
         }
-        .floating-link img {
-            width: 18px;
-            height: 18px;
-            border-radius: 5px;
-            object-fit: cover;
-        }
+        .floating-link img { width: 18px; height: 18px; border-radius: 5px; object-fit: cover; }
 
         #discord-live-badge {
-            position: fixed;
-            bottom: 22px;
-            left: 50%;
-            z-index: 61;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, #5865F2, #4752C4);
-            color: #fff;
-            padding: 8px 16px;
-            border-radius: 24px;
-            font-size: .78rem;
-            font-weight: 700;
-            box-shadow: 0 4px 18px rgba(88, 101, 242, .45);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 7px;
-            transition: transform .2s, box-shadow .2s;
-            white-space: nowrap;
-            font-family: inherit;
+            position: fixed; bottom: 22px; left: 50%; z-index: 61; transform: translateX(-50%);
+            background: linear-gradient(135deg,#5865F2,#4752C4); color: #fff; padding: 8px 16px;
+            border-radius: 24px; font-size: .78rem; font-weight: 700; box-shadow: 0 4px 18px rgba(88,101,242,.45);
+            text-decoration: none; display: flex; align-items: center; gap: 7px;
+            transition: transform .2s,box-shadow .2s; white-space: nowrap; font-family: inherit;
         }
-        #discord-live-badge:hover {
-            transform: translateX(-50%) scale(1.05);
-            box-shadow: 0 6px 24px rgba(88, 101, 242, .7);
-        }
-        #discord-live-badge img {
-            width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            object-fit: cover;
-            flex-shrink: 0;
-            box-shadow: 0 0 6px rgba(255, 255, 255, .3);
-        }
+        #discord-live-badge:hover { transform: translateX(-50%) scale(1.05); box-shadow: 0 6px 24px rgba(88,101,242,.7); }
+        #discord-live-badge img { width: 20px; height: 20px; border-radius: 5px; object-fit: cover; flex-shrink: 0; box-shadow: 0 0 6px rgba(255,255,255,.3); }
 
         #nova-widget-btn {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            z-index: 99999;
-            width: 58px;
-            height: 58px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #9B4FDB, #5865F2);
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(155, 79, 219, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            line-height: 1;
-            transition: transform .2s, box-shadow .2s;
-            animation: nova-pulse-ring 2.5s ease-in-out infinite;
+            position: fixed; bottom: 24px; right: 24px; z-index: 99999; width: 58px; height: 58px;
+            border-radius: 50%; background: linear-gradient(135deg,#9B4FDB,#5865F2); border: none;
+            cursor: pointer; box-shadow: 0 4px 20px rgba(155,79,219,0.5); display: flex;
+            align-items: center; justify-content: center; font-size: 28px; line-height: 1;
+            transition: transform .2s,box-shadow .2s; animation: nova-pulse-ring 2.5s ease-in-out infinite;
             color: #fff;
         }
-        @keyframes nova-pulse-ring {
-            0%,
-            100% {
-                box-shadow: 0 4px 20px rgba(155, 79, 219, 0.5);
-            }
-            50% {
-                box-shadow: 0 4px 32px rgba(155, 79, 219, 0.9), 0 0 0 8px rgba(155, 79, 219, 0.15);
-            }
-        }
-        #nova-widget-btn:hover {
-            transform: scale(1.1);
-        }
+        @keyframes nova-pulse-ring { 0%,100%{box-shadow:0 4px 20px rgba(155,79,219,0.5);} 50%{box-shadow:0 4px 32px rgba(155,79,219,0.9),0 0 0 8px rgba(155,79,219,0.15);} }
+        #nova-widget-btn:hover { transform: scale(1.1); }
         #nova-widget-panel {
-            position: fixed;
-            bottom: 94px;
-            right: 24px;
-            z-index: 99998;
-            width: 340px;
-            max-width: calc(100vw - 48px);
-            background: rgba(12, 18, 32, 0.97);
-            border: 1.5px solid rgba(155, 79, 219, 0.4);
-            border-radius: 16px;
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6), 0 0 30px rgba(155, 79, 219, 0.15);
-            display: flex;
-            flex-direction: column;
-            transform: scale(0.9) translateY(16px);
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.25s cubic-bezier(.4, 0, .2, 1);
-            overflow: hidden;
-            max-height: 520px;
+            position: fixed; bottom: 94px; right: 24px; z-index: 99998; width: 340px; max-width: calc(100vw - 48px);
+            background: rgba(12,18,32,0.97); border: 1.5px solid rgba(155,79,219,0.4); border-radius: 16px;
+            box-shadow: 0 16px 48px rgba(0,0,0,0.6),0 0 30px rgba(155,79,219,0.15); display: flex;
+            flex-direction: column; transform: scale(0.9) translateY(16px); opacity: 0; pointer-events: none;
+            transition: all 0.25s cubic-bezier(.4,0,.2,1); overflow: hidden; max-height: 520px;
         }
-        #nova-widget-panel.nova-open {
-            transform: scale(1) translateY(0);
-            opacity: 1;
-            pointer-events: all;
-        }
+        #nova-widget-panel.nova-open { transform: scale(1) translateY(0); opacity: 1; pointer-events: all; }
         #nova-panel-header {
-            background: linear-gradient(135deg, rgba(155, 79, 219, 0.25), rgba(88, 101, 242, 0.2));
-            padding: 14px 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-            flex-shrink: 0;
+            background: linear-gradient(135deg,rgba(155,79,219,0.25),rgba(88,101,242,0.2));
+            padding: 14px 16px; display: flex; align-items: center; gap: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.07); flex-shrink: 0;
         }
-        #nova-avatar {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            overflow: hidden;
-            flex-shrink: 0;
-            box-shadow: 0 0 12px rgba(155, 79, 219, 0.5);
-            background: linear-gradient(135deg, #9B4FDB, #5865F2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-        }
-        #nova-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        #nova-panel-title {
-            font-weight: 900;
-            font-size: 14px;
-            color: #fff;
-            line-height: 1.2;
-        }
-        #nova-panel-sub {
-            font-size: 11px;
-            color: rgba(255, 255, 255, 0.45);
-            margin-top: 2px;
-        }
-        #nova-online-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #47C96B;
-            margin-left: auto;
-            flex-shrink: 0;
-            box-shadow: 0 0 6px #47C96B;
-            animation: nova-blink 2s ease-in-out infinite;
-        }
-        @keyframes nova-blink {
-            0%,
-            100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.4;
-            }
-        }
+        #nova-avatar { width: 36px; height: 36px; border-radius: 50%; overflow: hidden; flex-shrink: 0; box-shadow: 0 0 12px rgba(155,79,219,0.5); background: linear-gradient(135deg,#9B4FDB,#5865F2); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        #nova-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        #nova-panel-title { font-weight: 900; font-size: 14px; color: #fff; line-height: 1.2; }
+        #nova-panel-sub { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+        #nova-online-dot { width: 8px; height: 8px; border-radius: 50%; background: #47C96B; margin-left: auto; flex-shrink: 0; box-shadow: 0 0 6px #47C96B; animation: nova-blink 2s ease-in-out infinite; }
+        @keyframes nova-blink { 0%,100%{opacity:1} 50%{opacity:0.4} }
         #nova-messages {
-            flex: 1;
-            overflow-y: auto;
-            padding: 14px 14px 8px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            font-family: 'Segoe UI', sans-serif;
-            scrollbar-width: thin;
-            scrollbar-color: rgba(155, 79, 219, 0.3) transparent;
+            flex: 1; overflow-y: auto; padding: 14px 14px 8px; display: flex; flex-direction: column;
+            gap: 10px; font-family: 'Segoe UI',sans-serif; scrollbar-width: thin;
+            scrollbar-color: rgba(155,79,219,0.3) transparent;
         }
-        #nova-messages::-webkit-scrollbar {
-            width: 4px;
-        }
-        #nova-messages::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        #nova-messages::-webkit-scrollbar-thumb {
-            background: rgba(155, 79, 219, 0.3);
-            border-radius: 2px;
-        }
-        .nova-msg {
-            max-width: 85%;
-            padding: 10px 13px;
-            border-radius: 12px;
-            font-size: 13.5px;
-            line-height: 1.65;
-            animation: nova-pop .2s ease;
-            word-break: break-word;
-        }
-        @keyframes nova-pop {
-            from {
-                opacity: 0;
-                transform: translateY(6px);
-            }
-            to {
-                opacity: 1;
-                transform: none;
-            }
-        }
-        .nova-msg.user {
-            align-self: flex-end;
-            background: linear-gradient(135deg, #9B4FDB, #5865F2);
-            color: #fff;
-            border-bottom-right-radius: 4px;
-        }
-        .nova-msg.bot {
-            align-self: flex-start;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            color: #E0EAF0;
-            border-bottom-left-radius: 4px;
-        }
-        .nova-msg.bot strong {
-            color: #FFD700;
-        }
-        .nova-msg.bot em {
-            color: #47C96B;
-            font-style: normal;
-        }
-        .nova-msg.bot code {
-            background: rgba(0, 0, 0, 0.4);
-            padding: 1px 5px;
-            border-radius: 3px;
-            font-size: 12px;
-            color: #FFD700;
-        }
-        .nova-typing {
-            align-self: flex-start;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            border-bottom-left-radius: 4px;
-            padding: 10px 14px;
-            display: flex;
-            gap: 5px;
-            align-items: center;
-        }
-        .nova-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: rgba(155, 79, 219, 0.8);
-            animation: nova-bounce .9s ease-in-out infinite;
-        }
-        .nova-dot:nth-child(2) {
-            animation-delay: .15s;
-        }
-        .nova-dot:nth-child(3) {
-            animation-delay: .3s;
-        }
-        @keyframes nova-bounce {
-            0%,
-            60%,
-            100% {
-                transform: translateY(0);
-            }
-            30% {
-                transform: translateY(-6px);
-            }
-        }
-        #nova-input-row {
-            display: flex;
-            gap: 8px;
-            padding: 10px 12px;
-            border-top: 1px solid rgba(255, 255, 255, 0.07);
-            background: rgba(0, 0, 0, 0.2);
-            flex-shrink: 0;
-        }
-        #nova-input {
-            flex: 1;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1.5px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 9px 13px;
-            color: #fff;
-            font-size: 13px;
-            font-family: 'Segoe UI', sans-serif;
-            outline: none;
-            resize: none;
-            max-height: 80px;
-            overflow-y: auto;
-            transition: border-color .2s;
-        }
-        #nova-input:focus {
-            border-color: rgba(155, 79, 219, 0.6);
-        }
-        #nova-input::placeholder {
-            color: rgba(255, 255, 255, 0.3);
-        }
-        #nova-input:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        #nova-send {
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, #9B4FDB, #5865F2);
-            border: none;
-            cursor: pointer;
-            color: #fff;
-            font-size: 17px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform .15s, opacity .15s;
-            flex-shrink: 0;
-            align-self: flex-end;
-        }
-        #nova-send:hover:not(:disabled) {
-            transform: scale(1.08);
-        }
-        #nova-send:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-        }
-        #nova-footer-note {
-            text-align: center;
-            font-size: 10px;
-            color: rgba(255, 255, 255, 0.2);
-            padding: 4px 0 8px;
-            font-family: 'Segoe UI', sans-serif;
-            flex-shrink: 0;
-        }
-        #nova-captcha-wrap {
-            padding: 12px;
-            display: none;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.07);
-            background: rgba(0, 0, 0, 0.16);
-        }
+        #nova-messages::-webkit-scrollbar { width: 4px; }
+        #nova-messages::-webkit-scrollbar-track { background: transparent; }
+        #nova-messages::-webkit-scrollbar-thumb { background: rgba(155,79,219,0.3); border-radius: 2px; }
+        .nova-msg { max-width: 85%; padding: 10px 13px; border-radius: 12px; font-size: 13.5px; line-height: 1.65; animation: nova-pop .2s ease; word-break: break-word; }
+        @keyframes nova-pop { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:none} }
+        .nova-msg.user { align-self: flex-end; background: linear-gradient(135deg,#9B4FDB,#5865F2); color: #fff; border-bottom-right-radius: 4px; }
+        .nova-msg.bot { align-self: flex-start; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); color: #E0EAF0; border-bottom-left-radius: 4px; }
+        .nova-msg.bot strong { color: #FFD700; }
+        .nova-msg.bot em { color: #47C96B; font-style: normal; }
+        .nova-msg.bot code { background: rgba(0,0,0,0.4); padding: 1px 5px; border-radius: 3px; font-size: 12px; color: #FFD700; }
+        .nova-typing { align-self: flex-start; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; border-bottom-left-radius: 4px; padding: 10px 14px; display: flex; gap: 5px; align-items: center; }
+        .nova-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(155,79,219,0.8); animation: nova-bounce .9s ease-in-out infinite; }
+        .nova-dot:nth-child(2) { animation-delay: .15s; }
+        .nova-dot:nth-child(3) { animation-delay: .3s; }
+        @keyframes nova-bounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-6px)} }
+        #nova-input-row { display: flex; gap: 8px; padding: 10px 12px; border-top: 1px solid rgba(255,255,255,0.07); background: rgba(0,0,0,0.2); flex-shrink: 0; }
+        #nova-input { flex: 1; background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 9px 13px; color: #fff; font-size: 13px; font-family: 'Segoe UI',sans-serif; outline: none; resize: none; max-height: 80px; overflow-y: auto; transition: border-color .2s; }
+        #nova-input:focus { border-color: rgba(155,79,219,0.6); }
+        #nova-input::placeholder { color: rgba(255,255,255,0.3); }
+        #nova-input:disabled { opacity: 0.5; cursor: not-allowed; }
+        #nova-send { width: 38px; height: 38px; border-radius: 10px; background: linear-gradient(135deg,#9B4FDB,#5865F2); border: none; cursor: pointer; color: #fff; font-size: 17px; display: flex; align-items: center; justify-content: center; transition: transform .15s,opacity .15s; flex-shrink: 0; align-self: flex-end; }
+        #nova-send:hover:not(:disabled) { transform: scale(1.08); }
+        #nova-send:disabled { opacity: 0.4; cursor: not-allowed; }
+        #nova-footer-note { text-align: center; font-size: 10px; color: rgba(255,255,255,0.2); padding: 4px 0 8px; font-family: 'Segoe UI',sans-serif; flex-shrink: 0; }
+        #nova-captcha-wrap { padding: 12px; display: none; text-align: center; border-top: 1px solid rgba(255,255,255,0.07); background: rgba(0,0,0,0.16); }
 
-        @media (max-width: 860px) {
-            .header {
-                position: relative;
-                top: auto;
-            }
-        }
-
+        @media (max-width: 860px) { .header { position: relative; top: auto; } }
         @media (max-width: 600px) {
-            .page {
-                padding: 12px;
-            }
-            .hero,
-            .step-container,
-            .footer {
-                padding: 16px;
-                border-radius: 18px;
-            }
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-            .header-actions {
-                width: 100%;
-            }
-            .header-actions .btn {
-                flex: 1;
-            }
-            .roadmap-phase {
-                padding: 8px 10px;
-                min-width: 65px;
-            }
-            .floating-link {
-                left: 10px;
-                right: auto;
-                bottom: 14px;
-                padding: 10px 12px;
-                font-size: .78rem;
-            }
-            #discord-live-badge {
-                bottom: 14px;
-                left: 50%;
-                transform: translateX(-50%);
-                font-size: .7rem;
-                padding: 7px 12px;
-            }
-            #nova-widget-btn {
-                right: 10px;
-                bottom: 14px;
-                width: 50px;
-                height: 50px;
-                font-size: 24px;
-            }
-            #nova-widget-panel {
-                right: 10px;
-                bottom: 78px;
-                width: calc(100vw - 20px);
-            }
+            .page { padding: 12px; }
+            .hero, .step-container, .footer { padding: 16px; border-radius: 18px; }
+            .btn { width: 100%; justify-content: center; }
+            .header-actions { width: 100%; }
+            .header-actions .btn { flex: 1; }
+            .roadmap-phase { padding: 8px 10px; min-width: 65px; }
+            .floating-link { left: 10px; right: auto; bottom: 14px; padding: 10px 12px; font-size: .78rem; }
+            #discord-live-badge { bottom: 14px; left: 50%; transform: translateX(-50%); font-size: .7rem; padding: 7px 12px; }
+            #nova-widget-btn { right: 10px; bottom: 14px; width: 50px; height: 50px; font-size: 24px; }
+            #nova-widget-panel { right: 10px; bottom: 78px; width: calc(100vw - 20px); }
         }
-
         @media (max-width: 400px) {
-            .floating-link {
-                left: 4px;
-                bottom: 10px;
-                padding: 8px 10px;
-                font-size: .7rem;
-                gap: 4px;
-                border-radius: 20px;
-            }
-            .floating-link img {
-                width: 14px;
-                height: 14px;
-            }
-            #discord-live-badge {
-                bottom: 10px;
-                font-size: .65rem;
-                padding: 6px 10px;
-                border-radius: 18px;
-            }
-            #nova-widget-btn {
-                right: 4px;
-                bottom: 10px;
-                width: 44px;
-                height: 44px;
-                font-size: 20px;
-            }
-            #nova-widget-panel {
-                right: 4px;
-                bottom: 66px;
-                width: calc(100vw - 8px);
-            }
+            .floating-link { left: 4px; bottom: 10px; padding: 8px 10px; font-size: .7rem; gap: 4px; border-radius: 20px; }
+            .floating-link img { width: 14px; height: 14px; }
+            #discord-live-badge { bottom: 10px; font-size: .65rem; padding: 6px 10px; border-radius: 18px; }
+            #nova-widget-btn { right: 4px; bottom: 10px; width: 44px; height: 44px; font-size: 20px; }
+            #nova-widget-panel { right: 4px; bottom: 66px; width: calc(100vw - 8px); }
         }
     </style>
 </head>
 <body>
-    <div class="page">
-        <header class="header">
-            <div class="brand">
-                <img src="https://i.ibb.co/cK60Sp0h/b41e6534d3e9.png" alt="NOVA icon" />
-                <div class="brand-text">
-                    <div class="brand-title">NOVA</div>
-                    <div class="brand-sub">Nexus Of Verified Assets</div>
-                </div>
-            </div>
-            <div class="header-actions">
-                <button class="btn" id="themeBtn" type="button">🌙 Theme</button>
-                <a class="btn" href="https://nova-library.pages.dev/" target="_blank" rel="noopener noreferrer">📚 NOVA Library</a>
-                <a class="btn primary" href="https://discord.gg/ThgxvPtUjZ" target="_blank" rel="noopener noreferrer">💬 Join NOVA</a>
-            </div>
-        </header>
-
-        <section class="hero">
-            <div class="hero-badge">📦 NOVA GUIDE</div>
-            <h1>How to Download through Linkvertise</h1>
-            <p>A simple, free way to support creators — just a few quick tasks. Creators use Linkvertise to earn support without charging you.</p>
-            <div class="hero-links">
-                <a class="btn primary" href="https://nova-library.pages.dev/" target="_blank" rel="noopener noreferrer">Open NOVA Library</a>
-                <a class="btn" href="https://discord.gg/ThgxvPtUjZ" target="_blank" rel="noopener noreferrer">Join the Server</a>
-            </div>
-        </section>
-
-        <div class="main-wrap">
-            <div class="trouble-callout">
-                <span class="trouble-icon">🛑</span>
-                <div>
-                    <div class="trouble-text">Having Trouble?</div>
-                    <div class="trouble-desc">
-                        <strong>» "Invalid Visit Detected"?</strong> Turn off your VPN and any ad‑blockers, then refresh.<br>
-                        <strong>» Stuck on a loading screen?</strong> Disable all browser extensions, clear cache &amp; cookies, and make sure JavaScript is enabled.<br>
-                        <strong>» "Continue" button stays grey?</strong> A task may be unfinished – scroll carefully and avoid refreshing unless absolutely necessary.
-                    </div>
-                </div>
-            </div>
-
-            <div class="warn-callout">
-                <span class="warn-icon">⚠️</span>
-                <div>
-                    <div class="warn-text">Before You Start – Important Setup</div>
-                    <div class="warn-desc">
-                        <strong>Completely disable</strong> any ad blockers &amp; privacy extensions – they silently break task detection.<br>
-                        <strong>Allow pop‑ups</strong> if your browser asks.<br>
-                        <strong>JavaScript must be enabled.</strong><br>
-                        <strong style="color:#ff6b6b;">You NEVER need to install apps or browser extensions.</strong> If asked, look for a skip button.
-                    </div>
-                </div>
-            </div>
-
-            <div class="roadmap-wrap">
-                <div class="roadmap-title">Your Journey Through Linkvertise</div>
-                <div class="roadmap" id="roadmap"></div>
-            </div>
-
-            <div class="where-card" id="whereCard">
-                <span class="where-icon">📍</span>
-                <div class="where-text">
-                    <h3>Where are you right now?</h3>
-                    <p>Tap a stage above that matches your screen. We'll show only the steps that matter.</p>
-                    <div class="where-current" id="whereCurrent" style="display:none"></div>
-                </div>
-            </div>
-
-            <div class="global-counter" id="globalCounter"></div>
-            <div class="step-container" id="stepContainer"></div>
-
-            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-
-            <div class="nav-wrap">
-                <button class="nav-btn" id="prevBtn">← Prev</button>
-                <div class="step-indicator-wrap">
-                    <span class="step-indicator" id="stepIndicator"></span>
-                    <span class="phase-indicator" id="phaseIndicator"></span>
-                </div>
-                <button class="nav-btn" id="nextBtn">Next →</button>
-            </div>
-
-            <div class="install-link-wrap" id="installLinkWrap" style="display:none">
-                <a href="https://nova-library.pages.dev/" target="_blank" rel="noopener noreferrer" class="install-link">
-                    📚 Browse NOVA Library for More Guides
-                </a>
+<div class="page">
+    <header class="header">
+        <div class="brand">
+            <img src="https://i.ibb.co/cK60Sp0h/b41e6534d3e9.png" alt="NOVA icon" />
+            <div class="brand-text">
+                <div class="brand-title">NOVA</div>
+                <div class="brand-sub">Nexus Of Verified Assets</div>
             </div>
         </div>
+        <div class="header-actions">
+            <button class="btn" id="themeBtn" type="button">🌙 Theme</button>
+            <a class="btn" href="https://nova-library.pages.dev/" target="_blank" rel="noopener noreferrer">📚 NOVA Library</a>
+            <a class="btn primary" href="https://discord.gg/ThgxvPtUjZ" target="_blank" rel="noopener noreferrer">💬 Join NOVA</a>
+        </div>
+    </header>
 
-        <footer class="footer">
-            <strong>NOVA — Nexus Of Verified Assets</strong><br />
-            Verified. Organized. Creator Respecting.<br />
-            <a href="https://nova-library.pages.dev/" target="_blank" rel="noopener noreferrer">https://nova-library.pages.dev/</a>
-        </footer>
-    </div>
+    <section class="hero">
+        <div class="hero-badge">📦 NOVA GUIDE</div>
+        <h1>How to Download through Linkvertise</h1>
+        <p>A simple, free way to support creators — just a few quick tasks. Creators use Linkvertise to earn support without charging you.</p>
+        <div class="hero-links">
+            <a class="btn primary" href="https://nova-library.pages.dev/" target="_blank" rel="noopener noreferrer">Open NOVA Library</a>
+            <a class="btn" href="https://discord.gg/ThgxvPtUjZ" target="_blank" rel="noopener noreferrer">Join the Server</a>
+        </div>
+    </section>
 
-    <a class="floating-link" href="https://nova-library.pages.dev/" target="_blank" rel="noopener noreferrer" title="Open NOVA Library">
-        <img src="https://i.ibb.co/cK60Sp0h/b41e6534d3e9.png" alt="NOVA" />
-        NOVA Library
-    </a>
-
-    <button id="nova-widget-btn" title="Chat with NOVA Assistant">🤖</button>
-    <div id="nova-widget-panel">
-        <div id="nova-panel-header">
-            <div id="nova-avatar">
-                <img src="https://i.ibb.co/cK60Sp0h/b41e6534d3e9.png" alt="NOVA">
-            </div>
+    <div class="main-wrap">
+        <div class="trouble-callout">
+            <span class="trouble-icon">🛑</span>
             <div>
-                <div id="nova-panel-title">NOVA Assistant</div>
-                <div id="nova-panel-sub">Nexus Of Verified Assets</div>
-            </div>
-            <div id="nova-online-dot"></div>
-        </div>
-        <div id="nova-messages">
-            <div class="nova-msg bot">Hey! 👋 I'm <strong>NOVA Assistant</strong>. Ask me anything about <em>Linkvertise</em>, unlocking links, or other NOVA topics — I'm here to help!</div>
-        </div>
-        <div id="nova-captcha-wrap">
-            <div class="cf-turnstile" data-sitekey="0x4AAAAAADQ644b2jjSd7BsB" data-callback="onCaptchaSuccess" data-theme="dark" data-size="flexible" style="max-width:300px;margin:0 auto;">
-            </div>
-            <div style="font-size:11px;color:rgba(255,255,255,0.3);text-align:center;margin-top:6px;font-family:sans-serif;">
-                Verify you're human to start chatting
+                <div class="trouble-text">Having Trouble?</div>
+                <div class="trouble-desc">
+                    <strong>» "Invalid Visit Detected"?</strong> Turn off your VPN and any ad‑blockers, then refresh.<br>
+                    <strong>» Stuck on a loading screen?</strong> Disable all browser extensions, clear cache &amp; cookies, and make sure JavaScript is enabled.<br>
+                    <strong>» "Continue" button stays grey?</strong> A task may be unfinished – scroll carefully and avoid refreshing unless absolutely necessary.
+                </div>
             </div>
         </div>
-        <div id="nova-input-row">
-            <textarea id="nova-input" placeholder="Ask me anything..." rows="1"></textarea>
-            <button id="nova-send">➤</button>
+
+        <div class="warn-callout">
+            <span class="warn-icon">⚠️</span>
+            <div>
+                <div class="warn-text">Before You Start – Important Setup</div>
+                <div class="warn-desc">
+                    <strong>Completely disable</strong> any ad blockers &amp; privacy extensions – they silently break task detection.<br>
+                    <strong>Allow pop‑ups</strong> if your browser asks.<br>
+                    <strong>JavaScript must be enabled.</strong><br>
+                    <strong style="color:#ff6b6b;">You NEVER need to install apps or browser extensions.</strong> If asked, look for a skip button.
+                </div>
+            </div>
         </div>
-        <div id="nova-footer-note">NOVA Assistance</div>
+
+        <div class="roadmap-wrap">
+            <div class="roadmap-title">Your Journey Through Linkvertise</div>
+            <div class="roadmap" id="roadmap"></div>
+        </div>
+
+        <div class="where-card" id="whereCard">
+            <span class="where-icon">📍</span>
+            <div class="where-text">
+                <h3>Where are you right now?</h3>
+                <p>Tap a stage above that matches your screen. We'll show only the steps that matter.</p>
+                <div class="where-current" id="whereCurrent" style="display:none"></div>
+            </div>
+        </div>
+
+        <div class="global-counter" id="globalCounter"></div>
+        <div class="step-container" id="stepContainer"></div>
+
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+        <div class="nav-wrap">
+            <button class="nav-btn" id="prevBtn">← Prev</button>
+            <div class="step-indicator-wrap">
+                <span class="step-indicator" id="stepIndicator"></span>
+                <span class="phase-indicator" id="phaseIndicator"></span>
+            </div>
+            <button class="nav-btn" id="nextBtn">Next →</button>
+        </div>
+
+        <div class="install-link-wrap" id="installLinkWrap" style="display:none">
+            <a href="https://nova-library.pages.dev/" target="_blank" rel="noopener noreferrer" class="install-link">
+                📚 Browse NOVA Library for More Guides
+            </a>
+        </div>
     </div>
-</body>
+
+    <footer class="footer">
+        <strong>NOVA — Nexus Of Verified Assets</strong><br />
+        Verified. Organized. Creator Respecting.<br />
+        <a href="https://nova-library.pages.dev/" target="_blank" rel="noopener noreferrer">https://nova-library.pages.dev/</a>
+    </footer>
+</div>
+
+<a class="floating-link" href="https://nova-library.pages.dev/" target="_blank" rel="noopener noreferrer" title="Open NOVA Library">
+    <img src="https://i.ibb.co/cK60Sp0h/b41e6534d3e9.png" alt="NOVA" />
+    NOVA Library
+</a>
+
+<button id="nova-widget-btn" title="Chat with NOVA Assistant">🤖</button>
+<div id="nova-widget-panel">
+    <div id="nova-panel-header">
+        <div id="nova-avatar"><img src="https://i.ibb.co/cK60Sp0h/b41e6534d3e9.png" alt="NOVA"></div>
+        <div>
+            <div id="nova-panel-title">NOVA Assistant</div>
+            <div id="nova-panel-sub">Nexus Of Verified Assets</div>
+        </div>
+        <div id="nova-online-dot"></div>
+    </div>
+    <div id="nova-messages">
+        <div class="nova-msg bot">Hey! 👋 I'm <strong>NOVA Assistant</strong>. Ask me anything about <em>Linkvertise</em>, unlocking links, or other NOVA topics — I'm here to help!</div>
+    </div>
+    <div id="nova-captcha-wrap">
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAADQ644b2jjSd7BsB" data-callback="onCaptchaSuccess" data-theme="dark" data-size="flexible" style="max-width:300px;margin:0 auto;"></div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.3);text-align:center;margin-top:6px;font-family:sans-serif;">Verify you're human to start chatting</div>
+    </div>
+    <div id="nova-input-row">
+        <textarea id="nova-input" placeholder="Ask me anything..." rows="1"></textarea>
+        <button id="nova-send">➤</button>
+    </div>
+    <div id="nova-footer-note">NOVA Assistance</div>
+</div>
+
 <script>
     const themeBtn = document.getElementById('themeBtn');
     const root = document.documentElement;
-
     function setTheme(theme) {
         root.setAttribute('data-theme', theme);
         themeBtn.textContent = theme === 'dark' ? '🌙 Theme' : '☀️ Theme';
         localStorage.setItem('nova_theme', theme);
     }
-
     themeBtn.addEventListener('click', () => {
         const current = root.getAttribute('data-theme') || 'dark';
         setTheme(current === 'dark' ? 'light' : 'dark');
     });
-
     const savedTheme = localStorage.getItem('nova_theme');
     if (savedTheme === 'light' || savedTheme === 'dark') setTheme(savedTheme);
     else setTheme('dark');
 </script>
 <script>
     const PHASES = [
-        { id: 'ALL', label: 'All Steps', emoji: '📋', color: '#FFD700', count: 0 },
-        { id: 'ARRIVING', label: 'Arriving', emoji: '🔵', color: '#00c6ff', count: 2 },
-        { id: 'TASKS', label: 'Complete Tasks', emoji: '🟡', color: '#f59e0b', count: 8 },
-        { id: 'FINAL', label: 'Final Download', emoji: '✅', color: '#00ff88', count: 3 },
+        { id:'ALL', label:'All Steps', emoji:'📋', color:'#FFD700', count:0 },
+        { id:'ARRIVING', label:'Arriving', emoji:'🔵', color:'#00c6ff', count:2 },
+        { id:'TASKS', label:'Complete Tasks', emoji:'🟡', color:'#f59e0b', count:8 },
+        { id:'FINAL', label:'Final Download', emoji:'✅', color:'#00ff88', count:3 },
     ];
 
     const ALL_STEPS = [
-        {
-            phase: 'ARRIVING', globalNum: 1,
-            title: 'Open the Linkvertise Link',
-            desc: 'Click the link. You\'ll land on the <strong>Linkvertise gateway page</strong>, not the file itself – this is normal.',
-            tips: ['Use Chrome, Firefox, or Edge (not Discord\'s in‑app browser).', 'If the link says "expired", ask the sharer for a new one.', 'Make sure ad blockers are OFF before proceeding.']
-        }, {
-            phase: 'ARRIVING', globalNum: 2,
-            title: 'Read the Gateway Page',
-            desc: 'You\'ll see the file name and a button like <strong>"Get Link"</strong> or <strong>"Continue"</strong>. A brief countdown may appear before it becomes clickable.',
-            tips: ['Only click the main button – ignore banners around it.', 'Wait for the countdown to finish before clicking.', 'Refreshing resets the timer – don\'t do it.']
-        }, {
-            phase: 'TASKS', globalNum: 3,
-            title: 'Choose "Free Access with Ads"',
-            desc: 'After clicking, you may see subscription plans. <strong>Scroll down</strong> and pick <strong>"Free Access with Ads"</strong> (or "Watch Ads").',
-            tips: ['You NEVER need to pay – always pick the free option.', 'A "Skip" or "No thanks" link can bypass paid plans.', 'The free option is usually at the bottom of the page.']
-        }, {
-            phase: 'TASKS', globalNum: 4,
-            title: 'A Captcha Might Appear',
-            desc: 'You may be asked to complete a captcha. It\'s a standard security step – just prove you\'re human.',
-            tips: ['Take your time – you can retry.', 'If it doesn\'t load, a refresh may reset progress (try a different browser if stuck).', 'VPNs can make captchas harder – disable temporarily if you struggle.']
-        }, {
-            phase: 'TASKS', globalNum: 5,
-            title: 'Task: Wait on a Sponsored Page',
-            desc: 'A pop‑up or new tab will open a sponsored offer. Keep it open for <strong>10–15 seconds</strong> while a timer runs on Linkvertise.',
-            tips: ['Don\'t close the tab early – let the timer finish.', 'You don\'t need to click anything on that offer page.', 'Once the timer ends, return to the original Linkvertise tab.']
-        }, {
-            phase: 'TASKS', globalNum: 6,
-            title: 'Task: Watch a Short Video Ad',
-            desc: 'A video ad (15–30 seconds) may play. Click the <strong>"Skip"</strong> button as soon as it appears.',
-            tips: ['Click "Skip" immediately when it shows up.', 'If there\'s no skip, let the ad finish (usually 30 seconds max).', 'Keep sound on – some ads require it to count.']
-        }, {
-            phase: 'TASKS', globalNum: 7,
-            title: 'Task: Keep an Article Tab Open',
-            desc: 'Linkvertise opens a random article in a new tab. Keep it open until the countdown on the main page reaches zero.',
-            tips: ['Both tabs stay open – don\'t close either one.', 'You can scroll, but you don\'t need to read anything.', 'Close the article tab only when the timer ends, then go back.']
-        }, {
-            phase: 'TASKS', globalNum: 8,
-            title: 'Task: Search on Google or Bing',
-            desc: 'You\'ll be asked to search for a keyword. Click <strong>"Search Now"</strong>, then click <strong>any result</strong> on the search page.',
-            tips: ['Click the search button to open the engine.', 'Click ANY result – one click is enough.', 'Stay on the result a few seconds, then return.']
-        }, {
-            phase: 'TASKS', globalNum: 9,
-            title: 'Task: Follow or Subscribe (Often Optional)',
-            desc: 'You might see a request to subscribe to a YouTube channel or follow a social account. <strong>Usually optional</strong>.',
-            tips: ['First, look for a "Skip" or "No Thanks" link near the bottom.', 'If required, follow/subscribe – you can unfollow later.', 'Linkvertise won\'t know if you unfollow afterwards.']
-        }, {
-            phase: 'TASKS', globalNum: 10,
-            title: 'Task: Download an App (No Install Needed!)',
-            desc: 'A button may ask you to download an app. <strong>You do NOT need to install it.</strong>',
-            tips: [
-                '1. Click the "Download" or "Install" button.',
-                '2. When the app store opens, immediately close it.',
-                '3. Return to the Linkvertise page and wait for the loading icon.',
-                '4. Wait about a minute – the window should close automatically.'
-            ]
-        }, {
-            phase: 'FINAL', globalNum: 11,
-            title: 'All Tasks Done – "Continue" Button Unlocks',
-            desc: 'After completing all tasks (usually 2–4), the <strong>"Continue"</strong> or <strong>"Get Access"</strong> button lights up and becomes clickable.',
-            tips: ['If the button is still grey, double‑check for unfinished tasks by scrolling up/down.', 'Be careful: refreshing may restart all tasks.', 'Some links require multiple rounds of tasks – be patient.']
-        }, {
-            phase: 'FINAL', globalNum: 12,
-            title: 'Click "Continue" to Reach Your File',
-            desc: 'Click the unlocked button. You\'ll be redirected to the real download page (MediaFire, Google Drive, MEGA, etc.).',
-            tips: ['Bookmark the final URL for easy access later.', 'If the page looks broken, try a different browser.', '"Link Expired"? Ask the original sharer for a fresh link.']
-        }, {
-            phase: 'FINAL', globalNum: 13,
-            title: 'Download & Import Your File',
-            desc: 'Your file will download automatically, or you\'ll see a download button. Click it and save the file.',
-            tips: ['On mobile, use Chrome or Firefox (avoid Samsung Internet).', 'On PC, check your Downloads folder (Ctrl+J in Chrome).', 'For .mcaddon/.mcpack/.mcworld, just tap the file to auto‑import into Minecraft.'],
-            showInstall: true
-        }
+        { phase:'ARRIVING', globalNum:1, title:'Open the Linkvertise Link', desc:'Click the link. You\'ll land on the <strong>Linkvertise gateway page</strong>, not the file itself – this is normal.', tips:['Use Chrome, Firefox, or Edge (not Discord\'s in‑app browser).','If the link says "expired", ask the sharer for a new one.','Make sure ad blockers are OFF before proceeding.'] },
+        { phase:'ARRIVING', globalNum:2, title:'Read the Gateway Page', desc:'You\'ll see the file name and a button like <strong>"Get Link"</strong> or <strong>"Continue"</strong>. A brief countdown may appear before it becomes clickable.', tips:['Only click the main button – ignore banners around it.','Wait for the countdown to finish before clicking.','Refreshing resets the timer – don\'t do it.'] },
+        { phase:'TASKS', globalNum:3, title:'Choose "Free Access with Ads"', desc:'After clicking, you may see subscription plans. <strong>Scroll down</strong> and pick <strong>"Free Access with Ads"</strong> (or "Watch Ads").', tips:['You NEVER need to pay – always pick the free option.','A "Skip" or "No thanks" link can bypass paid plans.','The free option is usually at the bottom of the page.'] },
+        { phase:'TASKS', globalNum:4, title:'A Captcha Might Appear', desc:'You may be asked to complete a captcha. It\'s a standard security step – just prove you\'re human.', tips:['Take your time – you can retry.','If it doesn\'t load, a refresh may reset progress (try a different browser if stuck).','VPNs can make captchas harder – disable temporarily if you struggle.'] },
+        { phase:'TASKS', globalNum:5, title:'Task: Wait on a Sponsored Page', desc:'A pop‑up or new tab will open a sponsored offer. Keep it open for <strong>10–15 seconds</strong> while a timer runs on Linkvertise.', tips:['Don\'t close the tab early – let the timer finish.','You don\'t need to click anything on that offer page.','Once the timer ends, return to the original Linkvertise tab.'] },
+        { phase:'TASKS', globalNum:6, title:'Task: Watch a Short Video Ad', desc:'A video ad (15–30 seconds) may play. Click the <strong>"Skip"</strong> button as soon as it appears.', tips:['Click "Skip" immediately when it shows up.','If there\'s no skip, let the ad finish (usually 30 seconds max).','Keep sound on – some ads require it to count.'] },
+        { phase:'TASKS', globalNum:7, title:'Task: Keep an Article Tab Open', desc:'Linkvertise opens a random article in a new tab. Keep it open until the countdown on the main page reaches zero.', tips:['Both tabs stay open – don\'t close either one.','You can scroll, but you don\'t need to read anything.','Close the article tab only when the timer ends, then go back.'] },
+        { phase:'TASKS', globalNum:8, title:'Task: Search on Google or Bing', desc:'You\'ll be asked to search for a keyword. Click <strong>"Search Now"</strong>, then click <strong>any result</strong> on the search page.', tips:['Click the search button to open the engine.','Click ANY result – one click is enough.','Stay on the result a few seconds, then return.'] },
+        { phase:'TASKS', globalNum:9, title:'Task: Follow or Subscribe (Often Optional)', desc:'You might see a request to subscribe to a YouTube channel or follow a social account. <strong>Usually optional</strong>.', tips:['First, look for a "Skip" or "No Thanks" link near the bottom.','If required, follow/subscribe – you can unfollow later.','Linkvertise won\'t know if you unfollow afterwards.'] },
+        { phase:'TASKS', globalNum:10, title:'Task: Download an App (No Install Needed!)', desc:'A button may ask you to download an app. <strong>You do NOT need to install it.</strong>', tips:['1. Click the "Download" or "Install" button.','2. When the app store opens, immediately close it.','3. Return to the Linkvertise page and wait for the loading icon.','4. Wait about a minute – the window should close automatically.'] },
+        { phase:'FINAL', globalNum:11, title:'All Tasks Done – "Continue" Button Unlocks', desc:'After completing all tasks (usually 2–4), the <strong>"Continue"</strong> or <strong>"Get Access"</strong> button lights up and becomes clickable.', tips:['If the button is still grey, double‑check for unfinished tasks by scrolling up/down.','Be careful: refreshing may restart all tasks.','Some links require multiple rounds of tasks – be patient.'] },
+        { phase:'FINAL', globalNum:12, title:'Click "Continue" to Reach Your File', desc:'Click the unlocked button. You\'ll be redirected to the real download page (MediaFire, Google Drive, MEGA, etc.).', tips:['Bookmark the final URL for easy access later.','If the page looks broken, try a different browser.','"Link Expired"? Ask the original sharer for a fresh link.'] },
+        { phase:'FINAL', globalNum:13, title:'Download & Import Your File', desc:'Your file will download automatically, or you\'ll see a download button. Click it and save the file.', tips:['On mobile, use Chrome or Firefox (avoid Samsung Internet).','On PC, check your Downloads folder (Ctrl+J in Chrome).','For .mcaddon/.mcpack/.mcworld, just tap the file to auto‑import into Minecraft.'], showInstall:true }
     ];
 
     let activePhaseId = 'ALL';
@@ -1286,12 +479,11 @@
             div.style.cssText = 'border-color:' + ph.color + '20; color:' + ph.color + ';';
             div.onclick = () => selectPhase(ph.id);
             const stepsInPhase = ALL_STEPS.filter(s => s.phase === ph.id).length;
-            div.innerHTML =
-                '<div class="roadmap-dot" style="background:' + ph.color +
-                '18;border-color:' + ph.color + '50;color:' + ph.color + ';">' + ph.emoji + '</div>' +
-                '<div class="roadmap-label">' + ph.label + '</div>' +
-                '<div class="roadmap-count">' + stepsInPhase + ' step' + (stepsInPhase > 1 ? 's' : '') +
-                '</div>';
+            div.innerHTML = `
+                <div class="roadmap-dot" style="background:${ph.color}18;border-color:${ph.color}50;color:${ph.color};">${ph.emoji}</div>
+                <div class="roadmap-label">${ph.label}</div>
+                <div class="roadmap-count">${stepsInPhase} step${stepsInPhase>1?'s':''}</div>
+            `;
             wrap.appendChild(div);
             if (i < PHASES.length - 1) {
                 const arr = document.createElement('div');
@@ -1302,8 +494,7 @@
         });
         const showAll = document.createElement('div');
         showAll.style.cssText = 'width:100%;text-align:center;margin-top:10px;';
-        showAll.innerHTML =
-            '<button onclick="selectPhase(\'ALL\')" style="background:var(--card);border:1px solid var(--border);color:var(--muted);padding:6px 18px;border-radius:8px;font-size:.8rem;font-weight:700;cursor:pointer;font-family:inherit;transition:0.2s;" onmouseover="this.style.background=\'rgba(255,255,255,0.05)\';this.style.color=\'var(--text)\'" onmouseout="this.style.background=\'var(--card)\';this.style.color=\'var(--muted)\'">📋 Show All Steps</button>';
+        showAll.innerHTML = `<button onclick="selectPhase('ALL')" style="background:var(--card);border:1px solid var(--border);color:var(--muted);padding:6px 18px;border-radius:8px;font-size:.8rem;font-weight:700;cursor:pointer;font-family:inherit;transition:0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)';this.style.color='var(--text)'" onmouseout="this.style.background='var(--card)';this.style.color='var(--muted)'">📋 Show All Steps</button>`;
         document.getElementById('roadmap').insertAdjacentElement('afterend', showAll);
     }
 
@@ -1316,37 +507,28 @@
             const el = document.getElementById('rp-' + ph.id);
             if (!el) return;
             if (ph.id === phaseId) {
-                el.style.cssText =
-                    'border-color:' + ph.color + '; color:' + ph.color + '; background:' + ph.color +
-                    '15; box-shadow:0 0 20px ' + ph.color + '25; transform:translateY(-4px);';
-                el.querySelector('.roadmap-dot').style.cssText = 'background:' + ph.color +
-                    '30;border-color:' + ph.color + ';color:' + ph.color + ';box-shadow:0 0 12px ' + ph.color +
-                    ';';
+                el.style.cssText = `border-color:${ph.color}; color:${ph.color}; background:${ph.color}15; box-shadow:0 0 20px ${ph.color}25; transform:translateY(-4px);`;
+                el.querySelector('.roadmap-dot').style.cssText = `background:${ph.color}30;border-color:${ph.color};color:${ph.color};box-shadow:0 0 12px ${ph.color};`;
             } else {
-                el.style.cssText =
-                    'border-color:' + ph.color + '20; color:' + ph.color +
-                    '; background:var(--card); box-shadow:var(--shadow); transform:none;';
-                el.querySelector('.roadmap-dot').style.cssText = 'background:' + ph.color +
-                    '18;border-color:' + ph.color + '50;color:' + ph.color + ';box-shadow:none;';
+                el.style.cssText = `border-color:${ph.color}20; color:${ph.color}; background:var(--card); box-shadow:var(--shadow); transform:none;`;
+                el.querySelector('.roadmap-dot').style.cssText = `background:${ph.color}18;border-color:${ph.color}50;color:${ph.color};box-shadow:none;`;
             }
         });
         const ph = PHASES.find(p => p.id === phaseId);
         const col = ph ? ph.color : 'var(--border)';
-        document.getElementById('stepContainer').style.borderColor = phaseId === 'ALL' ? color-mix(in srgb,
-            var(--border) 80%, transparent) : col + '60';
+        // Fix: properly set borderColor with a valid CSS string
+        document.getElementById('stepContainer').style.borderColor = phaseId === 'ALL' ?
+            'color-mix(in srgb, var(--border) 80%, transparent)' : col + '60';
         const wc = document.getElementById('whereCurrent');
         if (phaseId !== 'ALL' && ph) {
             wc.style.display = 'inline-flex';
-            wc.style.cssText =
-                'display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:8px;font-size:.8rem;font-weight:800;border:1.5px solid ' +
-                col + ';color:' + col + ';background:' + col + '12;margin-top:6px;';
-            wc.textContent = 'Viewing: ' + ph.label + ' (' + filteredSteps.length + ' step' + (filteredSteps
-                .length > 1 ? 's' : '') + ')';
+            wc.style.cssText = `display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:8px;font-size:.8rem;font-weight:800;border:1.5px solid ${col};color:${col};background:${col}12;margin-top:6px;`;
+            wc.textContent = `Viewing: ${ph.label} (${filteredSteps.length} step${filteredSteps.length>1?'s':''})`;
         } else {
             wc.style.display = 'none';
         }
         renderCurrentStep();
-        document.getElementById('stepContainer').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        document.getElementById('stepContainer').scrollIntoView({ behavior:'smooth', block:'nearest' });
     }
 
     function renderCurrentStep() {
@@ -1356,32 +538,30 @@
         const col = ph ? ph.color : '#FFD700';
         const gcEl = document.getElementById('globalCounter');
         if (activePhaseId !== 'ALL') {
-            gcEl.textContent = 'GLOBAL POSITION: STEP ' + step.globalNum + ' OF ' + ALL_STEPS.length;
+            gcEl.textContent = `GLOBAL POSITION: STEP ${step.globalNum} OF ${ALL_STEPS.length}`;
             gcEl.style.display = 'block';
         } else {
             gcEl.style.display = 'none';
         }
-        const tipsHTML = step.tips.map(t => '<li>' + t + '</li>').join('');
-        document.getElementById('stepContainer').innerHTML =
-            '<div class="step-panel active">' +
-            '<div class="step-header">' +
-            '<span class="step-num-badge" style="background:' + col + ';">' + (activePhaseId === 'ALL' ?
-                'STEP ' + step.globalNum : 'STEP ' + (currentIndex + 1)) + '</span>' +
-            '<span class="step-title-text">' + step.title + '</span>' +
-            '<span class="step-phase-tag" style="background:' + col + '18;border:1px solid ' + col + '50;color:' +
-            col + ';">' + (ph ? ph.label.toUpperCase() : step.phase) + '</span>' +
-            '</div>' +
-            '<div class="step-body">' + step.desc + '</div>' +
-            '<div class="tips-box">' +
-            '<div class="tips-title">💡 Tips &amp; Notes</div>' +
-            '<ul class="tips-list">' + tipsHTML + '</ul>' +
-            '</div>' +
-            '</div>';
+        const tipsHTML = step.tips.map(t => `<li>${t}</li>`).join('');
+        document.getElementById('stepContainer').innerHTML = `
+            <div class="step-panel active">
+                <div class="step-header">
+                    <span class="step-num-badge" style="background:${col};">${activePhaseId === 'ALL' ? 'STEP ' + step.globalNum : 'STEP ' + (currentIndex+1)}</span>
+                    <span class="step-title-text">${step.title}</span>
+                    <span class="step-phase-tag" style="background:${col}18;border:1px solid ${col}50;color:${col};">${ph ? ph.label.toUpperCase() : step.phase}</span>
+                </div>
+                <div class="step-body">${step.desc}</div>
+                <div class="tips-box">
+                    <div class="tips-title">💡 Tips &amp; Notes</div>
+                    <ul class="tips-list">${tipsHTML}</ul>
+                </div>
+            </div>
+        `;
         const pct = total > 1 ? (currentIndex / (total - 1)) * 100 : 100;
         document.getElementById('progressFill').style.width = pct + '%';
-        document.getElementById('stepIndicator').textContent = (currentIndex + 1) + ' / ' + total;
-        document.getElementById('phaseIndicator').textContent = activePhaseId === 'ALL' ? 'Showing all steps' :
-            'Filtered: ' + (ph ? ph.label : step.phase);
+        document.getElementById('stepIndicator').textContent = `${currentIndex + 1} / ${total}`;
+        document.getElementById('phaseIndicator').textContent = activePhaseId === 'ALL' ? 'Showing all steps' : `Filtered: ${ph ? ph.label : step.phase}`;
         document.getElementById('prevBtn').disabled = currentIndex === 0;
         document.getElementById('nextBtn').disabled = currentIndex === total - 1;
         document.getElementById('nextBtn').textContent = currentIndex === total - 1 ? '✅ Done' : 'Next →';
@@ -1409,18 +589,10 @@
         const SOURCE = 'linkvertise-guide';
 
         let token = localStorage.getItem('nova_token');
-        if (!token) { token = crypto.randomUUID();
-            localStorage.setItem('nova_token', token); }
+        if (!token) { token = crypto.randomUUID(); localStorage.setItem('nova_token', token); }
 
-        const fingerprint =
-            navigator.userAgent + "_" + screen.width + "x" + screen.height + "_" +
-            Intl.DateTimeFormat().resolvedOptions().timeZone;
-
-        const HEADERS = {
-            'Content-Type': 'application/json',
-            'x-user-token': token,
-            'x-user-fp': fingerprint
-        };
+        const fingerprint = navigator.userAgent + "_" + screen.width + "x" + screen.height + "_" + Intl.DateTimeFormat().resolvedOptions().timeZone;
+        const HEADERS = { 'Content-Type': 'application/json', 'x-user-token': token, 'x-user-fp': fingerprint };
 
         let captchaVerified = sessionStorage.getItem('nova_captcha') === 'yes';
         let captchaToken = null;
@@ -1429,255 +601,46 @@
             captchaToken = cfToken;
             captchaVerified = true;
             sessionStorage.setItem('nova_captcha', 'yes');
-            const captchaWrap = document.getElementById('nova-captcha-wrap');
-            const inputRow = document.getElementById('nova-input-row');
-            if (captchaWrap) captchaWrap.style.display = 'none';
-            if (inputRow) inputRow.style.display = 'flex';
+            document.getElementById('nova-captcha-wrap').style.display = 'none';
+            document.getElementById('nova-input-row').style.display = 'flex';
             const footer = document.getElementById('nova-footer-note');
             if (footer) footer.textContent = 'NOVA AI • Powered by NOVA Official';
-            const input = document.getElementById('nova-input');
-            if (input) input.focus();
+            document.getElementById('nova-input').focus();
         };
 
-        const BAD_WORDS = [
-            'fuck', 'f*ck', 'fck', 'fuk', 'fuq', 'fvck',
-            'shit', 'sh1t', 'sh*t', 'sht',
-            'bitch', 'b*tch', 'btch', 'biatch',
-            'bastard', 'cunt', 'c*nt',
-            'dick', 'd*ck', 'cock', 'c*ck',
-            'pussy', 'p*ssy', 'piss', 'p*ss',
-            'whore', 'wh*re', 'slut', 'sl*t',
-            'retard', 'retarded',
-            'i will kill', 'i\'ll kill', 'gonna kill',
-            'i hate you', 'hate you',
-            'shut up', 'stfu',
-            'go die', 'kys', 'kill yourself',
-            'you suck', 'sucks ass',
-            'useless bot', 'stupid bot', 'dumb bot',
-            'garbage bot', 'trash bot', 'worst bot',
-            'useless ai', 'stupid ai', 'dumb ai',
-            'this is trash', 'this is garbage',
-            'you\'re trash', 'you\'re garbage', 'you\'re useless',
-            'you\'re stupid', 'you\'re dumb', 'you\'re an idiot',
-            'you are trash', 'you are garbage', 'you are useless',
-            'you are stupid', 'you are dumb', 'you are an idiot',
-            'nsfw', 'porn', 'pornography', 'xxx', 'nude', 'naked',
-            'hentai', 'lewd', 'explicit', 'erotic', 'onlyfans', 'fetish',
-            'gore', 'self harm', 'self-harm',
-            'suicide method', 'how to kill', 'how to make bomb'
-        ];
-        const MULTI_WORD_BAD = BAD_WORDS.filter(w => w.includes(' '));
-        const SINGLE_BAD = BAD_WORDS.filter(w => !w.includes(' '));
+        const BAD_WORDS = ["fuck","f*ck","fck","fuk","fuq","fvck","shit","sh1t","sh*t","sht","bitch","b*tch","btch","biatch","bastard","cunt","c*nt","dick","d*ck","cock","c*ck","pussy","p*ssy","piss","p*ss","whore","wh*re","slut","sl*t","retard","retarded","i will kill","i'll kill","gonna kill","i hate you","hate you","shut up","stfu","go die","kys","kill yourself","you suck","sucks ass","useless bot","stupid bot","dumb bot","garbage bot","trash bot","worst bot","useless ai","stupid ai","dumb ai","this is trash","this is garbage","you're trash","you're garbage","you're useless","you're stupid","you're dumb","you're an idiot","you are trash","you are garbage","you are useless","you are stupid","you are dumb","you are an idiot","nsfw","porn","pornography","xxx","nude","naked","hentai","lewd","explicit","erotic","onlyfans","fetish","gore","self harm","self-harm","suicide method","how to kill","how to make bomb"];
+        const MULTI_WORD_BAD = BAD_WORDS.filter(w => w.includes(" "));
+        const SINGLE_BAD = BAD_WORDS.filter(w => !w.includes(" "));
+        function isBadMessage(text) { const l = text.toLowerCase(); for (const p of MULTI_WORD_BAD) if (l.includes(p)) return true; const t = new Set(l.match(/[a-z0-9*]+/g) || []); const c = new Set(l.replace(/\s+/g, '').match(/[a-z0-9*]+/g) || []); for (const w of SINGLE_BAD) if (t.has(w) || c.has(w)) return true; return false; }
 
-        function isBadMessage(text) {
-            const lowered = text.toLowerCase();
-            for (const p of MULTI_WORD_BAD)
-                if (lowered.includes(p)) return true;
-            const tokens = new Set(lowered.match(/[a-z0-9*]+/g) || []);
-            const collapsed = new Set(lowered.replace(/\s+/g, '').match(/[a-z0-9*]+/g) || []);
-            for (const w of SINGLE_BAD)
-                if (tokens.has(w) || collapsed.has(w)) return true;
-            return false;
-        }
-
-        const REPEAT_WINDOW = 5;
-        const REPEAT_LOCK_AT = 3;
-        const SHORT_LOCK_AT = 2;
-        const REPEAT_TIME_WIN = 60000;
-        let msgHistory = [];
-        let shortWarnShown = false;
-
+        const REPEAT_WINDOW = 5, REPEAT_LOCK_AT = 3, SHORT_LOCK_AT = 2, REPEAT_TIME_WIN = 60000;
+        let msgHistory = [], shortWarnShown = false;
         function normMsg(t) { return t.toLowerCase().trim().replace(/\s+/g, ' '); }
+        function simil(a, b) { if (!a || !b) return 0; const L = Math.max(a.length, b.length), S = Math.min(a.length, b.length); if (!L) return 1; let m = 0; for (let i = 0; i < S; i++) if (a[i] === b[i]) m++; return m / L; }
+        function checkRepetitive(text) { const n = normMsg(text), now = Date.now(); msgHistory = msgHistory.filter(e => now - e.t <= REPEAT_TIME_WIN); if (n.length <= 2) { const sc = msgHistory.filter(e => e.m === n).length; if (sc >= SHORT_LOCK_AT) return { lock: true, reason: 'short' }; if (!shortWarnShown) { shortWarnShown = true; return { lock: false, warn: true }; } } const ec = msgHistory.filter(e => e.m === n).length; if (ec >= REPEAT_LOCK_AT - 1) return { lock: true, reason: 'exact' }; const sc = msgHistory.filter(e => simil(n, e.m) >= 0.85 && n !== e.m).length; if (sc >= 2) return { lock: true, reason: 'similar' }; msgHistory.push({ m: n, t: Date.now() }); if (msgHistory.length > REPEAT_WINDOW) msgHistory = msgHistory.slice(-REPEAT_WINDOW); return { lock: false }; }
 
-        function simil(a, b) {
-            if (!a || !b) return 0;
-            const L = Math.max(a.length, b.length),
-                S = Math.min(a.length, b.length);
-            if (!L) return 1;
-            let m = 0;
-            for (let i = 0; i < S; i++)
-                if (a[i] === b[i]) m++;
-            return m / L;
-        }
+        let history = [], isOpen = false, isLoading = false, chatLocked = false, countdownInt = null;
+        const btn = document.getElementById('nova-widget-btn'), panel = document.getElementById('nova-widget-panel'), msgs = document.getElementById('nova-messages'), input = document.getElementById('nova-input'), sendBtn = document.getElementById('nova-send'), footer = document.getElementById('nova-footer-note');
 
-        function checkRepetitive(text) {
-            const norm = normMsg(text),
-                now = Date.now();
-            msgHistory = msgHistory.filter(e => now - e.t <= REPEAT_TIME_WIN);
-            if (norm.length <= 2) {
-                const sc = msgHistory.filter(e => e.m === norm).length;
-                if (sc >= SHORT_LOCK_AT) return { lock: true, reason: 'short' };
-                if (!shortWarnShown) { shortWarnShown = true; return { lock: false, warn: true }; }
-            }
-            const ec = msgHistory.filter(e => e.m === norm).length;
-            if (ec >= REPEAT_LOCK_AT - 1) return { lock: true, reason: 'exact' };
-            const sc = msgHistory.filter(e => simil(norm, e.m) >= 0.85 && norm !== e.m).length;
-            if (sc >= 2) return { lock: true, reason: 'similar' };
-            msgHistory.push({ m: norm, t: Date.now() });
-            if (msgHistory.length > REPEAT_WINDOW) msgHistory = msgHistory.slice(-REPEAT_WINDOW);
-            return { lock: false };
-        }
-
-        let history = [];
-        let isOpen = false;
-        let isLoading = false;
-        let chatLocked = false;
-        let countdownInt = null;
-
-        const btn = document.getElementById('nova-widget-btn');
-        const panel = document.getElementById('nova-widget-panel');
-        const msgs = document.getElementById('nova-messages');
-        const input = document.getElementById('nova-input');
-        const sendBtn = document.getElementById('nova-send');
-        const footer = document.getElementById('nova-footer-note');
-
-        function updateCaptchaState() {
-            const captchaWrap = document.getElementById('nova-captcha-wrap');
-            const inputRow = document.getElementById('nova-input-row');
-            if (captchaVerified) {
-                if (captchaWrap) captchaWrap.style.display = 'none';
-                if (inputRow) inputRow.style.display = 'flex';
-            } else {
-                if (captchaWrap) captchaWrap.style.display = 'block';
-                if (inputRow) inputRow.style.display = 'none';
-                if (footer) footer.textContent = '🔒 Verify to start chatting';
-            }
-        }
-
+        function updateCaptchaState() { const cw = document.getElementById('nova-captcha-wrap'), ir = document.getElementById('nova-input-row'); if (captchaVerified) { if (cw) cw.style.display = 'none'; if (ir) ir.style.display = 'flex'; } else { if (cw) cw.style.display = 'block'; if (ir) ir.style.display = 'none'; if (footer) footer.textContent = '🔒 Verify to start chatting'; } }
         let slowBanner = null;
-
-        function showSlowBanner(seconds) {
-            if (slowBanner) return;
-            slowBanner = document.createElement('div');
-            slowBanner.style.cssText =
-                'background:rgba(251,191,36,0.12);border-bottom:1px solid rgba(251,191,36,0.3);color:#fbbf24;font-size:11px;font-weight:700;text-align:center;padding:6px 10px;flex-shrink:0;';
-            slowBanner.textContent = '🛡️ High load detected — slow mode active (' + seconds + 's)';
-            panel.insertBefore(slowBanner, msgs);
-        }
-
-        function hideSlowBanner() { if (slowBanner) { slowBanner.remove();
-                slowBanner = null; } }
+        function showSlowBanner(s) { if (slowBanner) return; slowBanner = document.createElement('div'); slowBanner.style.cssText = 'background:rgba(251,191,36,0.12);border-bottom:1px solid rgba(251,191,36,0.3);color:#fbbf24;font-size:11px;font-weight:700;text-align:center;padding:6px 10px;flex-shrink:0;'; slowBanner.textContent = `🛡️ High load detected — slow mode active (${s}s)`; panel.insertBefore(slowBanner, msgs); }
+        function hideSlowBanner() { if (slowBanner) { slowBanner.remove(); slowBanner = null; } }
 
         const header = document.getElementById('nova-panel-header');
-        if (header) {
-            const newChatBtn = document.createElement('button');
-            newChatBtn.title = 'New conversation';
-            newChatBtn.textContent = '🔄';
-            newChatBtn.style.cssText =
-                'background:none;border:none;cursor:pointer;font-size:16px;opacity:0.45;transition:opacity .2s;padding:2px 4px;margin-left:auto;flex-shrink:0;';
-            newChatBtn.onmouseover = () => newChatBtn.style.opacity = '1';
-            newChatBtn.onmouseout = () => newChatBtn.style.opacity = '0.45';
-            newChatBtn.addEventListener('click', resetChat);
-            const dot = document.getElementById('nova-online-dot');
-            if (dot) header.insertBefore(newChatBtn, dot);
-            else header.appendChild(newChatBtn);
-        }
+        if (header) { const nc = document.createElement('button'); nc.title = 'New conversation'; nc.textContent = '🔄'; nc.style.cssText = 'background:none;border:none;cursor:pointer;font-size:16px;opacity:0.45;transition:opacity .2s;padding:2px 4px;margin-left:auto;flex-shrink:0;'; nc.onmouseover = () => nc.style.opacity = '1'; nc.onmouseout = () => nc.style.opacity = '0.45'; nc.addEventListener('click', resetChat); const dot = document.getElementById('nova-online-dot'); if (dot) header.insertBefore(nc, dot); else header.appendChild(nc); }
 
-        function startCountdown(seconds) {
-            clearInterval(countdownInt);
-            let rem = seconds;
+        function startCountdown(s) { clearInterval(countdownInt); let r = s; function tick() { if (r <= 0) { clearInterval(countdownInt); checkStatusOnLoad(); return; } const m = Math.floor(r / 60), sec = r % 60; if (footer) footer.textContent = m > 0 ? `⏳ Locked ${m}m ${sec}s` : `⏳ Locked ${sec}s`; r--; } tick(); countdownInt = setInterval(tick, 1000); }
+        function lockChat(msg, unlockIn) { clearInterval(countdownInt); chatLocked = true; input.disabled = true; sendBtn.disabled = true; input.placeholder = '⛔ Locked. Wait for timer.'; addMessage('bot', msg); if (unlockIn > 0) startCountdown(unlockIn); else if (footer) footer.textContent = '⚠️ Locked · Refresh to unlock'; }
+        function unlockChat() { clearInterval(countdownInt); chatLocked = false; input.disabled = false; sendBtn.disabled = false; input.placeholder = 'Ask me anything...'; hideSlowBanner(); if (footer) footer.textContent = 'NOVA AI • Powered by NOVA Official'; addMessage('bot', '✅ Lock lifted! You can send messages again. Please keep it respectful. 😊'); }
+        function resetChat() { if (isLoading) return; clearInterval(countdownInt); history = []; msgHistory = []; shortWarnShown = false; chatLocked = false; input.disabled = false; sendBtn.disabled = false; input.placeholder = 'Ask me anything...'; hideSlowBanner(); if (footer) footer.textContent = 'NOVA AI • Powered by NOVA Official'; msgs.innerHTML = ''; addMessage('bot', '🔄 Chat cleared! Hey! 👋 I\'m <strong>NOVA Assistant</strong>. Ask me anything — I\'m here to help!'); captchaVerified = false; captchaToken = null; sessionStorage.removeItem('nova_captcha'); updateCaptchaState(); if (window.turnstile) window.turnstile.reset(); }
 
-            function tick() {
-                if (rem <= 0) {
-                    clearInterval(countdownInt);
-                    checkStatusOnLoad();
-                    return;
-                }
-                const m = Math.floor(rem / 60),
-                    s = rem % 60;
-                if (footer) footer.textContent = m > 0 ? '⏳ Locked ' + m + 'm ' + s + 's' : '⏳ Locked ' + s +
-                    's';
-                rem--;
-            }
-            tick();
-            countdownInt = setInterval(tick, 1000);
-        }
+        async function checkStatusOnLoad() { try { const res = await fetch(STATUS_URL, { headers: HEADERS }); if (!res.ok) return; const data = await res.json(); if (data.slow_mode && data.slow_until > 0) showSlowBanner(data.slow_until); else hideSlowBanner(); if (data.locked && data.unlock_in > 0) { chatLocked = true; input.disabled = true; sendBtn.disabled = true; input.placeholder = '⛔ Locked. Wait for timer.'; startCountdown(data.unlock_in); if (isOpen) addMessage('bot', `⛔ You are still locked — ${data.unlock_in}s remaining. Refreshing won't bypass this.`); } else if (chatLocked && !data.locked) unlockChat(); } catch (e) {} }
+        updateCaptchaState(); checkStatusOnLoad();
 
-        function lockChat(message, unlockIn) {
-            clearInterval(countdownInt);
-            chatLocked = true;
-            input.disabled = true;
-            sendBtn.disabled = true;
-            input.placeholder = '⛔ Locked. Wait for timer.';
-            addMessage('bot', message);
-            if (unlockIn > 0) startCountdown(unlockIn);
-            else if (footer) footer.textContent = '⚠️ Locked · Refresh to unlock';
-        }
-
-        function unlockChat() {
-            clearInterval(countdownInt);
-            chatLocked = false;
-            input.disabled = false;
-            sendBtn.disabled = false;
-            input.placeholder = 'Ask me anything...';
-            hideSlowBanner();
-            if (footer) footer.textContent = 'NOVA AI • Powered by NOVA Official';
-            addMessage('bot', '✅ Lock lifted! You can send messages again. Please keep it respectful. 😊');
-        }
-
-        function resetChat() {
-            if (isLoading) return;
-            clearInterval(countdownInt);
-            history = [];
-            msgHistory = [];
-            shortWarnShown = false;
-            chatLocked = false;
-            input.disabled = false;
-            sendBtn.disabled = false;
-            input.placeholder = 'Ask me anything...';
-            hideSlowBanner();
-            if (footer) footer.textContent = 'NOVA AI • Powered by NOVA Official';
-            msgs.innerHTML = '';
-            addMessage('bot',
-                '🔄 Chat cleared! Hey! 👋 I\'m <strong>NOVA Assistant</strong>. Ask me anything — I\'m here to help!');
-            captchaVerified = false;
-            captchaToken = null;
-            sessionStorage.removeItem('nova_captcha');
-            updateCaptchaState();
-            if (window.turnstile) window.turnstile.reset();
-        }
-
-        async function checkStatusOnLoad() {
-            try {
-                const res = await fetch(STATUS_URL, { headers: HEADERS });
-                if (!res.ok) return;
-                const data = await res.json();
-                if (data.slow_mode && data.slow_until > 0) showSlowBanner(data.slow_until);
-                else hideSlowBanner();
-                if (data.locked && data.unlock_in > 0) {
-                    chatLocked = true;
-                    input.disabled = true;
-                    sendBtn.disabled = true;
-                    input.placeholder = '⛔ Locked. Wait for timer.';
-                    startCountdown(data.unlock_in);
-                    if (isOpen) addMessage('bot',
-                        '⛔ You are still locked — ' + data.unlock_in +
-                        's remaining. Refreshing won\'t bypass this.');
-                } else if (chatLocked && !data.locked) unlockChat();
-            } catch (e) {}
-        }
-
-        updateCaptchaState();
-        checkStatusOnLoad();
-
-        btn.addEventListener('click', () => {
-            isOpen = !isOpen;
-            panel.classList.toggle('nova-open', isOpen);
-            btn.textContent = isOpen ? '✕' : '🤖';
-            if (isOpen) { scrollToBottom();
-                checkStatusOnLoad();
-                updateCaptchaState(); }
-        });
-
-        input.addEventListener('input', () => {
-            input.style.height = 'auto';
-            input.style.height = Math.min(input.scrollHeight, 80) + 'px';
-        });
-
-        input.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault();
-                sendMessage(); }
-        });
+        btn.addEventListener('click', () => { isOpen = !isOpen; panel.classList.toggle('nova-open', isOpen); btn.textContent = isOpen ? '✕' : '🤖'; if (isOpen) { scrollToBottom(); checkStatusOnLoad(); updateCaptchaState(); } });
+        input.addEventListener('input', () => { input.style.height = 'auto'; input.style.height = Math.min(input.scrollHeight, 80) + 'px'; });
+        input.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); } });
         sendBtn.addEventListener('click', sendMessage);
 
         async function sendMessage() {
@@ -1685,126 +648,32 @@
             if (!captchaVerified) { updateCaptchaState(); return; }
             const text = input.value.trim();
             if (!text || isLoading) return;
-            if (text.length > 600) {
-                lockChat('⛔ <strong>Chat locked</strong> — message too long. Keep under 600 chars. 🔄', 15);
-                return;
-            }
-            if (isBadMessage(text)) {
-                lockChat(
-                    '⛔ <strong>Chat locked</strong> — swearing, NSFW, and rude behavior are not allowed. 🔄',
-                15);
-                return;
-            }
+            if (text.length > 600) { lockChat('⛔ <strong>Chat locked</strong> — message too long. Keep under 600 chars. 🔄', 15); return; }
+            if (isBadMessage(text)) { lockChat('⛔ <strong>Chat locked</strong> — swearing, NSFW, and rude behavior are not allowed. 🔄', 15); return; }
             const rep = checkRepetitive(text);
-            if (rep.warn) {
-                addMessage('bot', '💡 Please ask a proper question! Very short messages may be limited. 😊');
-                input.value = '';
-                input.style.height = 'auto';
-                return;
-            }
-            if (rep.lock) {
-                lockChat(
-                    rep.reason === 'short' ?
-                    '⛔ <strong>Chat locked</strong> — please type real questions. 🔄' :
-                    '⛔ <strong>Chat locked</strong> — stop repeating the same message. 🔄',
-                    15
-                );
-                return;
-            }
+            if (rep.warn) { addMessage('bot', '💡 Please ask a proper question! Very short messages may be limited. 😊'); input.value = ''; input.style.height = 'auto'; return; }
+            if (rep.lock) { lockChat(rep.reason === 'short' ? '⛔ <strong>Chat locked</strong> — please type real questions. 🔄' : '⛔ <strong>Chat locked</strong> — stop repeating the same message. 🔄', 15); return; }
 
-            addMessage('user', text);
-            history.push({ role: 'user', content: text });
-            input.value = '';
-            input.style.height = 'auto';
-
-            const typing = addTyping();
-            setLoading(true);
-
+            addMessage('user', text); history.push({ role: 'user', content: text }); input.value = ''; input.style.height = 'auto';
+            const typing = addTyping(); setLoading(true);
             try {
-                const res = await fetch(API_URL, {
-                    method: 'POST',
-                    headers: HEADERS,
-                    body: JSON.stringify({
-                        message: text,
-                        history: history.slice(0, -1),
-                        source: SOURCE,
-                        captcha_token: captchaToken || ''
-                    })
-                });
-                if (!res.ok) throw new Error('HTTP ' + res.status);
+                const res = await fetch(API_URL, { method: 'POST', headers: HEADERS, body: JSON.stringify({ message: text, history: history.slice(0, -1), source: SOURCE, captcha_token: captchaToken || '' }) });
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const data = await res.json();
-                if (data.captcha) {
-                    typing.remove();
-                    captchaVerified = false;
-                    captchaToken = null;
-                    sessionStorage.removeItem('nova_captcha');
-                    updateCaptchaState();
-                    if (window.turnstile) window.turnstile.reset();
-                    addMessage('bot', '⛔ Human verification failed. Please verify again.');
-                    setLoading(false);
-                    return;
-                }
-                if (data.locked) {
-                    typing.remove();
-                    lockChat(data.response || '⛔ You have been locked. Please wait.', data.unlock_in || 15);
-                    setLoading(false);
-                    return;
-                }
-                if (data.slow_mode) {
-                    typing.remove();
-                    showSlowBanner(data.unlock_in || 60);
-                    addMessage('bot', data.response || '🛡️ NOVA is under high load. Please wait.');
-                    setLoading(false);
-                    return;
-                }
-                if (data.spam) {
-                    typing.remove();
-                    lockChat(data.response || '⛔ Chat locked. Refresh to unlock.', 0);
-                    setLoading(false);
-                    return;
-                }
+                if (data.captcha) { typing.remove(); captchaVerified = false; captchaToken = null; sessionStorage.removeItem('nova_captcha'); updateCaptchaState(); if (window.turnstile) window.turnstile.reset(); addMessage('bot', '⛔ Human verification failed. Please verify again.'); setLoading(false); return; }
+                if (data.locked) { typing.remove(); lockChat(data.response || '⛔ You have been locked. Please wait.', data.unlock_in || 15); setLoading(false); return; }
+                if (data.slow_mode) { typing.remove(); showSlowBanner(data.unlock_in || 60); addMessage('bot', data.response || '🛡️ NOVA is under high load. Please wait.'); setLoading(false); return; }
+                if (data.spam) { typing.remove(); lockChat(data.response || '⛔ Chat locked. Refresh to unlock.', 0); setLoading(false); return; }
                 const reply = data.response || 'Sorry, no response. Please try again.';
-                history.push({ role: 'assistant', content: reply });
-                typing.remove();
-                addMessage('bot', reply);
-            } catch (err) {
-                typing.remove();
-                addMessage('bot', '⚠️ Something went wrong. Please try again in a moment.');
-                console.error('[NOVA Widget]', err);
-            } finally {
-                setLoading(false);
-                input.focus();
-            }
+                history.push({ role: 'assistant', content: reply }); typing.remove(); addMessage('bot', reply);
+            } catch (err) { typing.remove(); addMessage('bot', '⚠️ Something went wrong. Please try again in a moment.'); console.error('[NOVA Widget]', err); }
+            finally { setLoading(false); input.focus(); }
         }
 
-        function addMessage(role, text) {
-            const div = document.createElement('div');
-            div.className = 'nova-msg ' + role;
-            div.innerHTML = text
-                .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                .replace(/\*(.*?)\*/g, '<em>$1</em>')
-                .replace(/`(.*?)`/g, '<code>$1</code>')
-                .replace(/\n/g, '<br>');
-            msgs.appendChild(div);
-            scrollToBottom();
-            return div;
-        }
-
-        function addTyping() {
-            const div = document.createElement('div');
-            div.className = 'nova-typing';
-            div.innerHTML = '<div class="nova-dot"></div><div class="nova-dot"></div><div class="nova-dot"></div>';
-            msgs.appendChild(div);
-            scrollToBottom();
-            return div;
-        }
-
+        function addMessage(role, text) { const div = document.createElement('div'); div.className = `nova-msg ${role}`; div.innerHTML = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\*(.*?)\*/g, '<em>$1</em>').replace(/`(.*?)`/g, '<code>$1</code>').replace(/\n/g, '<br>'); msgs.appendChild(div); scrollToBottom(); return div; }
+        function addTyping() { const div = document.createElement('div'); div.className = 'nova-typing'; div.innerHTML = '<div class="nova-dot"></div><div class="nova-dot"></div><div class="nova-dot"></div>'; msgs.appendChild(div); scrollToBottom(); return div; }
         function scrollToBottom() { msgs.scrollTop = msgs.scrollHeight; }
-
-        function setLoading(s) { isLoading = s;
-            input.disabled = s;
-            sendBtn.disabled = s; }
+        function setLoading(s) { isLoading = s; input.disabled = s; sendBtn.disabled = s; }
     })();
 </script>
 <script>
@@ -1819,24 +688,17 @@
             badge.href = 'https://discord.gg/ThgxvPtUjZ';
             badge.target = '_blank';
             badge.rel = 'noopener';
-            badge.style.cssText =
-                'position:fixed;bottom:22px;left:50%;z-index:61;transform:translateX(-50%);background:linear-gradient(135deg,#5865F2,#4752C4);color:#fff;padding:8px 16px;border-radius:24px;font-size:.78rem;font-weight:700;box-shadow:0 4px 18px rgba(88,101,242,.45);text-decoration:none;display:flex;align-items:center;gap:7px;transition:transform .2s,box-shadow .2s;white-space:nowrap;font-family:inherit;';
+            badge.style.cssText = 'position:fixed;bottom:22px;left:50%;z-index:61;transform:translateX(-50%);background:linear-gradient(135deg,#5865F2,#4752C4);color:#fff;padding:8px 16px;border-radius:24px;font-size:.78rem;font-weight:700;box-shadow:0 4px 18px rgba(88,101,242,.45);text-decoration:none;display:flex;align-items:center;gap:7px;transition:transform .2s,box-shadow .2s;white-space:nowrap;font-family:inherit;';
             const icon = document.createElement('img');
             icon.src = 'https://i.ibb.co/cK60Sp0h/b41e6534d3e9.png';
-            icon.style.cssText =
-                'width:20px;height:20px;border-radius:5px;object-fit:cover;flex-shrink:0;box-shadow:0 0 6px rgba(255,255,255,.3);';
+            icon.style.cssText = 'width:20px;height:20px;border-radius:5px;object-fit:cover;flex-shrink:0;box-shadow:0 0 6px rgba(255,255,255,.3);';
             badge.appendChild(icon);
             badge.appendChild(document.createTextNode('🟢 ' + count + ' online · Join NOVA'));
-            badge.onmouseover = () => {
-                badge.style.transform = 'translateX(-50%) scale(1.05)';
-                badge.style.boxShadow = '0 6px 24px rgba(88,101,242,.7)';
-            };
-            badge.onmouseout = () => {
-                badge.style.transform = 'translateX(-50%) scale(1)';
-                badge.style.boxShadow = '0 4px 18px rgba(88,101,242,.45)';
-            };
+            badge.onmouseover = () => { badge.style.transform = 'translateX(-50%) scale(1.05)'; badge.style.boxShadow = '0 6px 24px rgba(88,101,242,.7)'; };
+            badge.onmouseout = () => { badge.style.transform = 'translateX(-50%) scale(1)'; badge.style.boxShadow = '0 4px 18px rgba(88,101,242,.45)'; };
             document.body.appendChild(badge);
         } catch (e) {}
     })();
 </script>
+</body>
 </html>
