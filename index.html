@@ -55,13 +55,12 @@
         .header {
             position: sticky; top: 0; z-index: 50;
             backdrop-filter: blur(10px);
-            background: color-mix(in srgb, var(--bg2) 85%, transparent);
-            border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+            background: var(--bg2);  /* fallback solid color */
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 18px; box-shadow: var(--shadow);
             padding: 14px 16px; display: flex; align-items: center; justify-content: space-between;
             gap: 14px; flex-wrap: wrap; margin-bottom: 18px;
         }
-
         .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
         .brand img { width: 48px; height: 48px; border-radius: 14px; object-fit: cover; border: 1px solid var(--border); box-shadow: 0 0 0 3px rgba(255,255,255,.03); flex-shrink: 0; }
         .brand-text { min-width: 0; }
@@ -80,8 +79,8 @@
         .btn.primary { background: linear-gradient(135deg, var(--accent), var(--gold)); color: #07111e; border-color: transparent; }
 
         .hero {
-            border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
-            background: linear-gradient(180deg, color-mix(in srgb, var(--card2) 70%, transparent), var(--card));
+            border: 1px solid rgba(255,255,255,0.1);
+            background: var(--card);
             border-radius: 22px; box-shadow: var(--shadow); padding: 26px; margin-bottom: 18px;
         }
         .hero-badge {
@@ -134,7 +133,7 @@
         .roadmap-arrow { color: rgba(255,255,255,.18); font-size: 15px; padding: 0 3px; align-self: center; flex-shrink: 0; }
 
         .where-card {
-            background: var(--card); border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+            background: var(--card); border: 1px solid rgba(255,255,255,0.1);
             border-radius: 16px; padding: 14px 18px; margin-bottom: 14px; display: flex; align-items: center;
             gap: 12px; flex-wrap: wrap; box-shadow: var(--shadow);
         }
@@ -145,7 +144,7 @@
         .where-current { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 8px; font-size: .8rem; font-weight: 800; border: 1.5px solid; margin-top: 6px; }
 
         .step-container {
-            background: var(--card); border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+            background: var(--card); border: 1px solid rgba(255,255,255,0.1);
             border-radius: 20px; padding: 22px 20px; box-shadow: var(--shadow); transition: border-color 0.3s;
         }
         .step-panel { display: none; }
@@ -163,7 +162,7 @@
         .step-body strong { color: var(--gold); }
 
         .tips-box {
-            margin-top: 12px; background: var(--card2); border: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+            margin-top: 12px; background: var(--card2); border: 1px solid rgba(255,255,255,0.05);
             border-radius: 12px; padding: 12px 14px;
         }
         .tips-title { font-size: .72rem; font-weight: 700; letter-spacing: .06em; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
@@ -194,8 +193,8 @@
         .install-link:hover { transform: translateY(-3px); box-shadow: 0 0 32px rgba(0,229,255,.5); }
 
         .footer {
-            margin-top: 18px; border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
-            background: color-mix(in srgb, var(--card) 88%, transparent); border-radius: 20px;
+            margin-top: 18px; border: 1px solid rgba(255,255,255,0.08);
+            background: var(--card); border-radius: 20px;
             padding: 16px; box-shadow: var(--shadow); text-align: center; color: var(--muted); line-height: 1.7; font-size: .92rem;
         }
         .footer strong { color: var(--text); }
@@ -442,10 +441,10 @@
 </script>
 <script>
     const PHASES = [
-        { id:'ALL', label:'All Steps', emoji:'📋', color:'#FFD700', count:0 },
-        { id:'ARRIVING', label:'Arriving', emoji:'🔵', color:'#00c6ff', count:2 },
-        { id:'TASKS', label:'Complete Tasks', emoji:'🟡', color:'#f59e0b', count:8 },
-        { id:'FINAL', label:'Final Download', emoji:'✅', color:'#00ff88', count:3 },
+        { id:'ALL', label:'All Steps', emoji:'📋', color:'#FFD700' },
+        { id:'ARRIVING', label:'Arriving', emoji:'🔵', color:'#00c6ff' },
+        { id:'TASKS', label:'Complete Tasks', emoji:'🟡', color:'#f59e0b' },
+        { id:'FINAL', label:'Final Download', emoji:'✅', color:'#00ff88' }
     ];
 
     const ALL_STEPS = [
@@ -471,21 +470,20 @@
     function buildRoadmap() {
         const wrap = document.getElementById('roadmap');
         wrap.innerHTML = '';
-        PHASES.forEach((ph, i) => {
-            if (ph.id === 'ALL') return;
+        const displayPhases = PHASES.filter(p => p.id !== 'ALL');
+        displayPhases.forEach((ph, i) => {
             const div = document.createElement('div');
             div.className = 'roadmap-phase';
             div.id = 'rp-' + ph.id;
-            div.style.cssText = 'border-color:' + ph.color + '20; color:' + ph.color + ';';
             div.onclick = () => selectPhase(ph.id);
             const stepsInPhase = ALL_STEPS.filter(s => s.phase === ph.id).length;
             div.innerHTML = `
-                <div class="roadmap-dot" style="background:${ph.color}18;border-color:${ph.color}50;color:${ph.color};">${ph.emoji}</div>
+                <div class="roadmap-dot">${ph.emoji}</div>
                 <div class="roadmap-label">${ph.label}</div>
                 <div class="roadmap-count">${stepsInPhase} step${stepsInPhase>1?'s':''}</div>
             `;
             wrap.appendChild(div);
-            if (i < PHASES.length - 1) {
+            if (i < displayPhases.length - 1) {
                 const arr = document.createElement('div');
                 arr.className = 'roadmap-arrow';
                 arr.textContent = '›';
@@ -494,8 +492,13 @@
         });
         const showAll = document.createElement('div');
         showAll.style.cssText = 'width:100%;text-align:center;margin-top:10px;';
-        showAll.innerHTML = `<button onclick="selectPhase('ALL')" style="background:var(--card);border:1px solid var(--border);color:var(--muted);padding:6px 18px;border-radius:8px;font-size:.8rem;font-weight:700;cursor:pointer;font-family:inherit;transition:0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)';this.style.color='var(--text)'" onmouseout="this.style.background='var(--card)';this.style.color='var(--muted)'">📋 Show All Steps</button>`;
-        document.getElementById('roadmap').insertAdjacentElement('afterend', showAll);
+        const btnShow = document.createElement('button');
+        btnShow.textContent = '📋 Show All Steps';
+        btnShow.className = 'btn';
+        btnShow.style.cssText = 'padding:6px 18px;font-size:.8rem;';
+        btnShow.onclick = () => selectPhase('ALL');
+        showAll.appendChild(btnShow);
+        wrap.insertAdjacentElement('afterend', showAll);
     }
 
     function selectPhase(phaseId) {
@@ -507,22 +510,31 @@
             const el = document.getElementById('rp-' + ph.id);
             if (!el) return;
             if (ph.id === phaseId) {
-                el.style.cssText = `border-color:${ph.color}; color:${ph.color}; background:${ph.color}15; box-shadow:0 0 20px ${ph.color}25; transform:translateY(-4px);`;
-                el.querySelector('.roadmap-dot').style.cssText = `background:${ph.color}30;border-color:${ph.color};color:${ph.color};box-shadow:0 0 12px ${ph.color};`;
+                el.style.borderColor = ph.color;
+                el.style.background = ph.color + '20';
+                el.style.boxShadow = `0 0 20px ${ph.color}40`;
+                el.style.transform = 'translateY(-4px)';
+                el.querySelector('.roadmap-dot').style.background = ph.color + '30';
+                el.querySelector('.roadmap-dot').style.borderColor = ph.color;
             } else {
-                el.style.cssText = `border-color:${ph.color}20; color:${ph.color}; background:var(--card); box-shadow:var(--shadow); transform:none;`;
-                el.querySelector('.roadmap-dot').style.cssText = `background:${ph.color}18;border-color:${ph.color}50;color:${ph.color};box-shadow:none;`;
+                el.style.borderColor = 'rgba(255,255,255,0.1)';
+                el.style.background = 'var(--card)';
+                el.style.boxShadow = 'var(--shadow)';
+                el.style.transform = 'none';
+                el.querySelector('.roadmap-dot').style.background = ph.color + '18';
+                el.querySelector('.roadmap-dot').style.borderColor = ph.color + '50';
             }
         });
         const ph = PHASES.find(p => p.id === phaseId);
-        const col = ph ? ph.color : 'var(--border)';
-        // Fix: properly set borderColor with a valid CSS string
+        const col = ph ? ph.color : '#FFD700';
         document.getElementById('stepContainer').style.borderColor = phaseId === 'ALL' ?
-            'color-mix(in srgb, var(--border) 80%, transparent)' : col + '60';
+            'rgba(255,255,255,0.1)' : col + '60';
         const wc = document.getElementById('whereCurrent');
         if (phaseId !== 'ALL' && ph) {
             wc.style.display = 'inline-flex';
-            wc.style.cssText = `display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:8px;font-size:.8rem;font-weight:800;border:1.5px solid ${col};color:${col};background:${col}12;margin-top:6px;`;
+            wc.style.borderColor = col;
+            wc.style.color = col;
+            wc.style.background = col + '12';
             wc.textContent = `Viewing: ${ph.label} (${filteredSteps.length} step${filteredSteps.length>1?'s':''})`;
         } else {
             wc.style.display = 'none';
